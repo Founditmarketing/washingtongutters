@@ -1,0 +1,54 @@
+/*
+ * MOBILE-ONLY POLISH (≤767px)
+ * One tasteful entrance for the hero words; everything else removed.
+ * The previous file ran four simultaneous infinite-loop animations
+ * (shimmer, badge-pulse, hero-glow, heading-accent) which together
+ * felt restless and "AI made that". One restrained motion is plenty.
+ *
+ * Desktop and iPad are completely untouched — see the reset block.
+ */
+
+@media (max-width: 767px) {
+  .mob-hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: heroWordIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .mob-hero-word:nth-child(1) { animation-delay: 0.2s; }
+  .mob-hero-word:nth-child(2) { animation-delay: 0.32s; }
+  .mob-hero-word:nth-child(3) { animation-delay: 0.44s; }
+  .mob-hero-word:nth-child(4) { animation-delay: 0.56s; }
+
+  @keyframes heroWordIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tap feedback for cards — same haptic feel as buttons. */
+  .mob-card-tilt {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .mob-card-tilt:active {
+    transform: scale(0.97);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .mob-hero-word {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mob-hero-word {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .mob-card-tilt:active {
+    transform: none !important;
+  }
+}

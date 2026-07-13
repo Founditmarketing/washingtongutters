@@ -1,0 +1,97 @@
+/*
+ * Washington Gutters 4 Less — design tokens
+ * Mirrors DESIGN.md. Update both files together.
+ */
+
+@theme {
+  /* Colors (OKLCH; tinted toward brand hue, never pure black or white)
+     Brand palette (from the Washington Gutters 4 Less logo):
+       - Navy  #001c62 → hue 262.5° (deep, authoritative trade navy)
+       - Red   #ca0f09 → hue 29.2°  (bold, confident brand red)
+     Token names are kept from the prior theme so consuming components need
+     no changes: `royal*` = the navy family, `copper*` = the red accent. */
+  --color-royal: oklch(0.32 0.13 262.5);         /* navy — nav, badges, UI accents (lifted from brand for legibility) */
+  --color-royal-deep: oklch(0.266 0.128 262.5);  /* exact brand navy #001c62 — hero/dark section backgrounds */
+  --color-royal-ink: oklch(0.18 0.09 262.5);     /* near-navy black — footer bg, wordmark */
+  --color-royal-tint: oklch(0.91 0.045 262.5);   /* pale mist — callout panels, chips */
+  --color-copper: oklch(0.531 0.212 29.2);       /* brand red #ca0f09 — CTAs, eyebrows, accents */
+  --color-copper-deep: oklch(0.455 0.185 29.2);  /* deeper red — hover state */
+  --color-bone: oklch(0.97 0.010 85);            /* warm cream — content section background */
+  --color-paper: oklch(0.995 0.003 85);          /* near-white warm — card surface on bone */
+  --color-slate: oklch(0.22 0.020 262.5);        /* dark navy-tinted body text */
+  --color-line: oklch(0.32 0.13 262.5 / 0.10);
+  --color-line-strong: oklch(0.32 0.13 262.5 / 0.18);
+
+  /* Type families — Heritage Trade direction:
+     - Display: Barlow Condensed Black/Bold (industrial, condensed, confident)
+     - Body/UI: Manrope (clean, neutral, hyper-readable)
+     - Stamp: Roboto Condensed used inside trade-badge components */
+  --font-display: "Barlow Condensed", "Oswald", "Impact", system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-stamp: "Roboto Condensed", "Barlow Condensed", system-ui, sans-serif;
+
+  /* Type scale (fluid; clamp(min, fluid, max))
+     Mins are tuned so display headlines fit on iPhone SE / mini (320–375px)
+     without breaking to one word per line. The previous mins (60px, 48px)
+     forced "BUILT / FOR / THE / RAIN / BELT" on narrow viewports. */
+  --text-display-xl: clamp(2.875rem, 12.5vw, 9rem);   /* 46px–144px */
+  --text-display-lg: clamp(2.25rem, 8.5vw, 5.5rem);   /* 36px–88px */
+  --text-display-md: clamp(1.875rem, 6.5vw, 4rem);    /* 30px–64px */
+  --text-display-sm: clamp(1.625rem, 4.5vw, 2.75rem); /* 26px–44px */
+
+  /* Spacing rhythm (vary section padding for cadence) */
+  --space-section-sm: clamp(4rem, 8vw, 5rem);
+  --space-section-md: clamp(5rem, 10vw, 7rem);
+  --space-section-lg: clamp(6rem, 12vw, 9rem);
+  --space-page-x: clamp(1.5rem, 4vw, 2.5rem);
+
+  /* Layout caps */
+  --max-content: 1400px;
+  --max-prose: 680px;
+
+  /* Easing */
+  --ease-quart: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-ios-spring: cubic-bezier(0.32, 0.72, 0, 1); /* iOS UISpring approximation */
+  --ease-ios-emphasized: cubic-bezier(0.36, 0.66, 0.04, 1);
+
+  /* Native radii (iOS uses 12-22 for UI; we tier them) */
+  --radius-pill: 9999px;
+  --radius-card: 18px;
+  --radius-card-sm: 14px;
+  --radius-input: 12px;
+  --radius-tile: 22px;
+
+  /* Material / blur surfaces (mirrors UIVisualEffectView styles) */
+  --blur-thin: saturate(180%) blur(20px);
+  --blur-thick: saturate(180%) blur(40px);
+  --blur-ultra: saturate(180%) blur(60px);
+
+  /* iOS material colors. Truly translucent so scrolling content reads through.
+     Tab bar uses bone-tinted; header uses navy-tinted, both with grain handled
+     in CSS. */
+  --material-bar-bone: oklch(0.97 0.010 85 / 0.72);
+  --material-bar-navy: oklch(0.22 0.10 262.5 / 0.72);
+}
+
+/* Safe-area inset shorthands for iOS notch / home indicator awareness. */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Combined offsets used by sticky surfaces */
+  --tabbar-height: 68px;
+  --tabbar-offset: calc(var(--tabbar-height) + var(--safe-bottom));
+
+  /* Section bottom-padding for any in-viewport / 100svh section,
+     so its trailing content never gets clobbered by the fixed mobile tab bar.
+     On desktop (≥768px) the tab bar disappears so this collapses to a normal pad. */
+  --page-bottom-pad: calc(var(--tabbar-offset) + 1.25rem);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-bottom-pad: 2rem;
+  }
+}

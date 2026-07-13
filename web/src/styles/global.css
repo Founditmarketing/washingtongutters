@@ -1,0 +1,360 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./mobile-epic.css";
+
+@layer base {
+  :root {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html, body, #root {
+    min-height: 100%;
+  }
+
+  /* Anchor scrolls (e.g. #customer-videos, #reviews) should land BELOW
+     the fixed header, not behind it. Targets the section the user
+     actually wanted to read. The value matches the header's tallest
+     state (h-32 = 8rem) plus the iOS safe area. */
+  html {
+    scroll-padding-top: calc(var(--safe-top, 0px) + 8rem);
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bone);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    /* iOS rubber-band effect at the top */
+    overscroll-behavior-y: contain;
+  }
+
+  /* Native-feel tap behavior */
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    background: var(--color-copper);
+    color: white;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Improve native button defaults */
+  button {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; }
+  .font-display-black { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.015em; }
+  .font-display-bold { font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
+  .font-stamp { font-family: var(--font-stamp); font-weight: 700; }
+  .font-sans-ui { font-family: var(--font-sans); }
+
+  /* Editorial italic accent — only for kicker bridges and the occasional
+     pull-quote. Never set in roman; never on display headlines. Adds a single
+     supporting voice to the otherwise mono-typographic system. */
+  .font-editorial {
+    font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    font-optical-sizing: auto;
+  }
+
+  /* iOS-style blurred material backgrounds. These are translucent ENOUGH that
+     content reads through with a soft blur, so they don't visually amputate
+     the page beneath them — but readable because of the saturated blur. */
+  .material-light {
+    background-color: var(--material-bar-bone);
+    backdrop-filter: var(--blur-ultra);
+    -webkit-backdrop-filter: var(--blur-ultra);
+  }
+  .material-dark {
+    background-color: var(--material-bar-navy);
+    backdrop-filter: var(--blur-ultra);
+    -webkit-backdrop-filter: var(--blur-ultra);
+  }
+  .material-thin {
+    background-color: oklch(0.99 0.003 85 / 0.55);
+    backdrop-filter: var(--blur-thin);
+    -webkit-backdrop-filter: var(--blur-thin);
+  }
+  /* Fallback for browsers without backdrop-filter — fall back to opaque tinted
+     surface so labels stay readable (Firefox on some platforms). */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .material-light { background-color: oklch(0.96 0.012 85 / 0.97); }
+    .material-dark { background-color: oklch(0.22 0.10 262.5 / 0.97); }
+  }
+
+  .page-dot {
+    width: 7px; height: 7px; border-radius: 9999px;
+    background: oklch(0.32 0.13 262.5 / 0.32);
+    transition: all 250ms var(--ease-ios-spring);
+  }
+
+  /* Tap feedback like UIControl (compresses then springs back) */
+  .haptic {
+    transition: transform 180ms var(--ease-ios-spring);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .haptic:active {
+    transform: scale(0.965);
+  }
+
+  /* Hide scrollbars on snap rails */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+  /* Page-indicator dots row */
+  .page-dots {
+    display: flex; gap: 6px; align-items: center; justify-content: center;
+  }
+  .page-dot.is-active {
+    width: 24px;
+    background: var(--color-copper);
+  }
+
+  /* Bottom-pad utility for in-viewport / 100svh sections so their content
+     never sits behind the fixed mobile tab bar. */
+  .pb-tabbar { padding-bottom: var(--page-bottom-pad); }
+
+  /* Mobile-only tighter section padding override. Sections still use the
+     existing var-based padding on desktop. */
+  .py-section-mobile {
+    padding-top: clamp(3.5rem, 9vw, 5rem);
+    padding-bottom: clamp(3.5rem, 9vw, 5rem);
+  }
+  @media (min-width: 768px) {
+    .py-section-mobile {
+      padding-top: var(--space-section-md);
+      padding-bottom: var(--space-section-md);
+    }
+  }
+
+  /* Image grading — applied to every site photograph for a unified palette.
+     Slight desaturation + warm cast + contrast bump moves AI-feeling stock
+     and inconsistent gallery shots toward a single tonal range that lives
+     comfortably alongside the navy + amber palette. Tunable in one place. */
+  .graded {
+    filter:
+      saturate(0.86)
+      contrast(1.06)
+      brightness(0.96);
+  }
+  /* Heavier treatment for hero / large feature photos. Adds a touch of warmth
+     so the cool navy gradient over them reads more deliberate. */
+  .graded-warm {
+    filter:
+      saturate(0.78)
+      contrast(1.08)
+      brightness(0.94)
+      sepia(0.06)
+      hue-rotate(-4deg);
+  }
+
+  /* Subtle ken-burns on hero — desktop only, paused for prefers-reduced-motion.
+     The hero image breathes from 100% → 105% over 14s, never snapping back so
+     the user doesn't see the cut. */
+  .ken-burns {
+    animation: kenBurns 14s var(--ease-quart) both alternate infinite;
+    will-change: transform;
+  }
+  @keyframes kenBurns {
+    from { transform: scale(1)    translateY(0); }
+    to   { transform: scale(1.04) translateY(-1.5%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ken-burns { animation: none !important; }
+  }
+
+  /* Scroll-driven reveal: any element with data-reveal starts hidden and
+     becomes visible when its visibility class is toggled by the IO observer
+     in PageLayout. Translates only — never animates layout properties. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 900ms var(--ease-quart),
+      transform 900ms var(--ease-quart);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Tab bar entrance spring on first paint. */
+  .tabbar-spring-in {
+    animation: tabbarIn 700ms var(--ease-ios-spring) both;
+  }
+  @keyframes tabbarIn {
+    from { transform: translateY(120%); }
+    to   { transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tabbar-spring-in { animation: none !important; }
+  }
+
+  /* Magnetic press feedback for primary CTAs — slightly stronger than .haptic.
+     Adds a brief shadow lift on press so the button feels tactile. */
+  .haptic-primary {
+    transition:
+      transform 220ms var(--ease-ios-spring),
+      box-shadow 220ms var(--ease-quart);
+  }
+  .haptic-primary:active {
+    transform: scale(0.96) translateY(1px);
+  }
+
+  /* Brand wordmark — used on dark hero backgrounds where /logo.png washes out.
+     Barlow Condensed Black, tight tracking, two-tier with the "4 LESS" suffix. */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.02em;
+    line-height: 0.85;
+    text-transform: uppercase;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .wordmark .wordmark-top {
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: white;
+  }
+  .wordmark .wordmark-bot {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--color-copper);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  /* Display sizes are paired with .font-display-black for the Heritage Trade
+     direction. Tight leading (0.85–0.95) + negative tracking gives the
+     headline its signage / billboard density. */
+  .text-display-xl { font-size: var(--text-display-xl); line-height: 0.85; letter-spacing: -0.02em; }
+  .text-display-lg { font-size: var(--text-display-lg); line-height: 0.92; letter-spacing: -0.015em; }
+  .text-display-md { font-size: var(--text-display-md); line-height: 0.98; letter-spacing: -0.012em; }
+  .text-display-sm { font-size: var(--text-display-sm); line-height: 1.05; letter-spacing: -0.008em; }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  .copper-stroke {
+    -webkit-text-stroke: 1px var(--color-copper);
+    color: transparent;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 1rem;
+    z-index: 100;
+    background: var(--color-copper);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 1rem;
+  }
+}
+
+/* Component-level keyframes */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Reviews marquee — two-row continuous scroll. Pauses on hover so a curious
+   visitor can read the card under their cursor without losing it. */
+@keyframes reviews-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.reviews-marquee-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: reviews-scroll var(--rm-duration, 75s) linear infinite;
+  will-change: transform;
+}
+.reviews-marquee-track--reverse {
+  animation-direction: reverse;
+}
+.reviews-marquee:hover .reviews-marquee-track,
+.reviews-marquee:focus-within .reviews-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee-track { animation: none !important; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes underlineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Service-area marquee. Renders as two identical halves (see CityMarquee)
+ * and animates 0 -> -50%, so the loop is perfectly seamless/continuous with
+ * no jump at the wrap. `gap` gives equal spacing between every location and
+ * bullet. Mobile scrolls a little faster (shorter duration). */
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 2.75rem;
+  animation: marquee var(--marquee-duration, 34s) linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  .marquee-track {
+    gap: 1.9rem;
+    --marquee-duration: 19s;
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.9s var(--ease-quart) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track { animation: none; }
+}
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
