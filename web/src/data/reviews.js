@@ -1,70 +1,48 @@
 /*
- * Featured customer reviews — text pulled verbatim from the testimonials
- * section of washingtongutters4less.com (the brand's own site).
+ * Featured customer reviews — real, verbatim 5-star Google reviews for
+ * Washington Gutters 4 Less (owner-provided). Do not fabricate reviews or
+ * inflate the count; these are the genuine reviews the business has.
  *
- * Each entry is the reviewer's exact words paired with their city. Cities
- * span the active service area (King, Pierce & Snohomish County markets) to
- * show real footprint. All five-star.
- *
- * Keep this file <30 entries — beyond that the marquee duplicates cards
- * visibly during one rotation.
+ * `city` is optional — only set it when the reviewer named a location. The
+ * display components fall back to "Verified customer" when it's absent.
  */
 
 export const REVIEWS = [
   {
-    name: "Jason M.",
-    city: "Bellevue",
+    name: "Theran Weaver",
+    city: "Fox Island",
     rating: 5,
     text:
-      "Incredible service from start to finish. They arrived on time, explained everything clearly, and had my gutters repaired within hours. Highly recommend!",
+      "They were very communicative throughout the whole process, advised me on many options and explained lots of info about gutters. Came out and did a great job on our home and garage on Fox Island. I wouldn't hesitate to refer my family and friends, or anyone who needs gutters. Beat every other local company's price and was finished with the entire job much quicker than expected. Thanks again!",
   },
   {
-    name: "Lisa R.",
-    city: "Kirkland",
+    name: "Rocky Rioichy",
     rating: 5,
     text:
-      "Professional, friendly, and fast! They replaced my old gutters and now everything drains perfectly — even during heavy storms. Worth every penny.",
+      "WA Gutters 4 Less did an excellent job installing new gutters on our home. They were professional, punctual, and took the time to explain the entire process. The finished product looks great and feels built to last. Communication was clear from start to finish, and the pricing was very fair. I wouldn't hesitate to recommend them to anyone in need of new gutters!",
   },
   {
-    name: "Marcus T.",
-    city: "Tacoma",
+    name: "Lumenmari Quincy Carlos",
     rating: 5,
     text:
-      "I can't believe how smooth the entire process was. From the quote to the final inspection, they were transparent and thorough. Great team!",
+      "Super happy with the work from WA Gutters 4 Less. Doug and his crew showed up on time and got everything done quickly without cutting corners. The new gutters look sharp and have already held up great in the rain. Pricing was straightforward and there were no surprises. Solid experience all around — definitely recommend.",
   },
   {
-    name: "Amy L.",
-    city: "Redmond",
+    name: "Alexa Brady",
     rating: 5,
     text:
-      "We had sagging gutters for months and finally called these guys. Not only did they fix them fast, but they also cleaned up everything before they left. Excellent work!",
+      "I highly recommend! I was very impressed with the entire process and got an amazing deal. From the moment that they quoted me to the moment they finished, they were extremely professional, precise, and friendly. Their work is top notch, and has a really clean look to it. They made the whole experience quick and stress-free.",
   },
   {
-    name: "Tom S.",
-    city: "Everett",
+    name: "Addyboy",
+    city: "Yelm",
     rating: 5,
     text:
-      "Top-notch gutter installation! The crew was courteous and explained how the system works. No more leaks, and the house looks better too.",
+      "I'm a contractor. I have a customer in Yelm and they came out and did a great job on the gutters for my customer.",
   },
   {
-    name: "Natalie H.",
-    city: "Renton",
+    name: "Shane Harrell",
     rating: 5,
-    text:
-      "Very impressed with their attention to detail. They spotted a few issues I didn't even know I had and fixed them on the spot. Highly recommend!",
-  },
-  {
-    name: "Daniel W.",
-    city: "Issaquah",
-    rating: 5,
-    text:
-      "If you want honest, reliable service, this is the company to call. They showed up on time, were super respectful of our property, and the gutters look great.",
-  },
-  {
-    name: "Erika G.",
-    city: "Lynnwood",
-    rating: 5,
-    text:
-      "We had a major leak in the back gutter. They came out the same day I called and fixed it fast. Saved us from a much bigger issue. Thanks!",
+    text: "Excellent work — super professional and really nice.",
   },
 ];

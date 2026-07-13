@@ -7,9 +7,9 @@ import TradeStamp from "./atoms/TradeStamp";
 import Eyebrow from "./atoms/Eyebrow";
 import { useParallax } from "../hooks/useParallax";
 
-/* Hero trust-badge row — three large marks sitting together. Order is
- * owner-specified: Google rating first, satisfaction guarantee in the
- * middle, veteran-owned credential on the right. The row renders at two
+/* Hero trust-badge row — two large marks sitting together: the 100%
+ * satisfaction guarantee and the Washington Certified Veteran-Owned
+ * credential. The row renders at two
  * different sizes:
  *   - Mobile / tablet (in the headline column): `md` = 112px per badge,
  *     because 3 lg badges + gaps would overflow a 375px viewport.
@@ -24,7 +24,6 @@ function HeroTrustBadges({ size = "md", className = "", style }) {
       className={`flex items-center justify-center ${gap} ${className}`}
       style={style}
     >
-      <TradeStamp name="google-5-star-rating"  size={size} />
       <TradeStamp name="satisfaction-guarantee" size={size} />
       <TradeStamp name="wa-veteran-certified"   size={size} />
     </div>

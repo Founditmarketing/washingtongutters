@@ -60,7 +60,7 @@ export default function ReviewsPage() {
               <div>
                 <div className="font-display-bold uppercase tracking-tight text-base">{featured.name}</div>
                 <div className="text-[var(--color-copper)] text-[10px] tracking-[0.25em] uppercase font-semibold mt-0.5">
-                  {featured.city}, WA · Verified customer review
+                  {featured.city ? `${featured.city}, WA · Verified customer review` : "Verified customer review"}
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function ReviewsPage() {
                   <div>
                     <div className="font-display-bold uppercase tracking-tight text-[13.5px] text-[var(--color-royal)]">{r.name}</div>
                     <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold">
-                      {r.city}, WA
+                      {r.city ? `${r.city}, WA` : "Verified customer"}
                     </div>
                   </div>
                 </div>

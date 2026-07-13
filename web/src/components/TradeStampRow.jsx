@@ -25,7 +25,7 @@ export default function TradeStampRow({
   stamps = [
     { name: "wa-veteran-certified", label: "WA-Certified Veteran-Owned" },
     { name: "veteran-owned-business", label: "Veteran-Owned Business" },
-    { name: "google-5-star-rating", label: "5.0 ★ Rated in WA" },
+    { name: "satisfaction-guarantee", label: "100% Satisfaction" },
   ],
   size = "md",
   caption,

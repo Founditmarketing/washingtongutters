@@ -137,10 +137,10 @@ export default function AboutPage() {
         <TradeStampRow
           stamps={[
             { name: "veteran-owned-business", label: "Veteran-Owned Business" },
-            { name: "google-5-star-rating",   label: `${SITE.rating.value.toFixed(1)} ★ Rated in WA` },
+            { name: "satisfaction-guarantee", label: "100% Satisfaction" },
           ]}
           size="lg"
-          caption="Third-party trust signals. The Washington Certified Veteran-Owned designation above is state-issued; the 5-star rating reflects verified customer reviews."
+          caption="Real, verifiable trust signals — a Washington Certified Veteran-Owned designation and our 100% satisfaction guarantee. Every job is backed by our own crew."
         />
       </section>
 

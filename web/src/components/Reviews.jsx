@@ -52,7 +52,7 @@ function ReviewCardMobile({ r, featured = false }) {
               {r.name}
             </div>
             <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold mt-0.5">
-              {r.city}, WA
+              {r.city ? `${r.city}, WA` : "Verified customer"}
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function Reviews() {
               <div>
                 <div className="font-display text-lg">{featured.name}</div>
                 <div className="text-[var(--color-copper)] text-[11px] tracking-[0.2em] uppercase font-semibold mt-0.5">
-                  {featured.city}, WA
+                  {featured.city ? `${featured.city}, WA` : "Verified customer"}
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function Reviews() {
                 <div>
                   <div className="font-display text-[15px] text-[var(--color-royal)]">{r.name}</div>
                   <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold mt-0.5">
-                    {r.city}, WA
+                    {r.city ? `${r.city}, WA` : "Verified customer"}
                   </div>
                 </div>
               </div>

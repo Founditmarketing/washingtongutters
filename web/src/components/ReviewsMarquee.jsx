@@ -76,7 +76,7 @@ function ReviewCardMobile({ r }) {
             {r.name}
           </div>
           <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold mt-0.5 truncate">
-            {r.city}, WA
+            {r.city ? `${r.city}, WA` : "Verified customer"}
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ function ReviewCardDesktop({ r }) {
             {r.name}
           </div>
           <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold mt-0.5 truncate">
-            {r.city}, WA
+            {r.city ? `${r.city}, WA` : "Verified customer"}
           </div>
         </div>
       </div>

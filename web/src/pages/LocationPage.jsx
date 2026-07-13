@@ -218,7 +218,7 @@ export default function LocationPage() {
                     {r.name}
                   </div>
                   <div className="text-[var(--color-copper)] text-[10px] tracking-[0.2em] uppercase font-semibold mt-0.5">
-                    {r.city}, WA
+                    {r.city ? `${r.city}, WA` : "Verified customer"}
                   </div>
                 </div>
               </div>

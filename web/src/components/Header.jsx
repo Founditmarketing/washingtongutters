@@ -187,8 +187,8 @@ export default function Header({ onEstimate }) {
             : "opacity-0 translate-y-2 pointer-events-none"
         }`}
         style={{
-          paddingTop: "calc(var(--safe-top) + 1.25rem)",
-          paddingBottom: "calc(var(--safe-bottom) + 2.5rem)",
+          paddingTop: "calc(var(--safe-top) + 0.75rem)",
+          paddingBottom: "calc(var(--safe-bottom) + 1rem)",
         }}
         aria-hidden={!mobileNav}
         role="dialog"
@@ -208,10 +208,10 @@ export default function Header({ onEstimate }) {
         </div>
 
         {/* Quick actions — the three real conversion paths.  */}
-        <div className="relative px-[var(--space-page-x)] mt-8 grid grid-cols-3 gap-2.5">
+        <div className="relative px-[var(--space-page-x)] mt-4 grid grid-cols-3 gap-2.5">
           <a
             href={SITE.phone.tel}
-            className="haptic flex flex-col items-center gap-2 py-4 rounded-[var(--radius-card-sm)] bg-white/[0.06] border border-white/10 text-white"
+            className="haptic flex flex-col items-center gap-1.5 py-3 rounded-[var(--radius-card-sm)] bg-white/[0.06] border border-white/10 text-white"
             onClick={() => setMobileNav(false)}
           >
             <Phone className="w-5 h-5 text-[var(--color-copper)]" />
@@ -219,7 +219,7 @@ export default function Header({ onEstimate }) {
           </a>
           <a
             href={SITE.phone.sms}
-            className="haptic flex flex-col items-center gap-2 py-4 rounded-[var(--radius-card-sm)] bg-white/[0.06] border border-white/10 text-white"
+            className="haptic flex flex-col items-center gap-1.5 py-3 rounded-[var(--radius-card-sm)] bg-white/[0.06] border border-white/10 text-white"
             onClick={() => setMobileNav(false)}
           >
             <MessageSquare className="w-5 h-5 text-[var(--color-copper)]" />
@@ -227,7 +227,7 @@ export default function Header({ onEstimate }) {
           </a>
           <button
             onClick={() => { setMobileNav(false); onEstimate?.(); }}
-            className="haptic flex flex-col items-center gap-2 py-4 rounded-[var(--radius-card-sm)] bg-[var(--color-copper)] text-white shadow-lg shadow-[var(--color-copper)]/20"
+            className="haptic flex flex-col items-center gap-1.5 py-3 rounded-[var(--radius-card-sm)] bg-[var(--color-copper)] text-white shadow-lg shadow-[var(--color-copper)]/20"
           >
             <ArrowRight className="w-5 h-5" />
             <span className="text-[12px] font-semibold tracking-tight">Estimate</span>
@@ -236,10 +236,10 @@ export default function Header({ onEstimate }) {
 
         {/* Navigation list */}
         <nav
-          className="relative px-[var(--space-page-x)] mt-10 flex-1"
+          className="relative px-[var(--space-page-x)] mt-4 flex-1"
           aria-label="Primary"
         >
-          <div className="text-[var(--color-copper)] text-[10px] tracking-[0.32em] uppercase font-bold mb-5">
+          <div className="text-[var(--color-copper)] text-[10px] tracking-[0.32em] uppercase font-bold mb-2">
             Browse
           </div>
           <ul className="divide-y divide-white/10">
@@ -255,10 +255,10 @@ export default function Header({ onEstimate }) {
                     <button
                       onClick={() => setOpenSub(open ? null : n.label)}
                       aria-expanded={open}
-                      className="w-full flex items-center justify-between py-4"
+                      className="w-full flex items-center justify-between py-2"
                     >
                       <span
-                        className={`font-display-bold uppercase tracking-tight text-2xl ${
+                        className={`font-display-bold uppercase tracking-tight text-xl ${
                           active ? "text-[var(--color-copper)]" : "text-white/90"
                         }`}
                       >
@@ -296,12 +296,12 @@ export default function Header({ onEstimate }) {
                 <li key={n.label}>
                   <Link
                     to={n.href}
-                    className={`haptic flex items-center justify-between py-4 ${
+                    className={`haptic flex items-center justify-between py-2 ${
                       active ? "text-[var(--color-copper)]" : "text-white/90 hover:text-white"
                     }`}
                     onClick={() => setMobileNav(false)}
                   >
-                    <span className="font-display-bold uppercase tracking-tight text-2xl">
+                    <span className="font-display-bold uppercase tracking-tight text-xl">
                       {n.label}
                     </span>
                     <ArrowRight className="w-5 h-5 opacity-60" />
@@ -312,17 +312,14 @@ export default function Header({ onEstimate }) {
           </ul>
         </nav>
 
-        {/* Footer NAP */}
-        <div className="relative px-[var(--space-page-x)] mt-8 text-white/65 text-[13px] leading-relaxed">
-          <div className="text-[var(--color-copper)] text-[10px] tracking-[0.32em] uppercase font-bold mb-3">
-            Reach Us
-          </div>
-          <a href={SITE.phone.tel} className="block text-white text-base font-display-bold uppercase tracking-tight">
+        {/* Footer NAP — compact single row so the menu fits without scrolling. */}
+        <div className="relative px-[var(--space-page-x)] mt-4 pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+          <a href={SITE.phone.tel} className="text-white text-[15px] font-display-bold uppercase tracking-tight">
             {SITE.phone.display}
           </a>
-          <div className="mt-2">
+          <span className="text-white/50 text-[12px] text-right leading-snug">
             Serving {SITE.address.regionFull} · Free estimates
-          </div>
+          </span>
         </div>
       </div>
     </>
