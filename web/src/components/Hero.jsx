@@ -69,6 +69,7 @@ export default function Hero({ onEstimate }) {
   return (
     <section
       id="top"
+      data-hero
       className="relative min-h-[88svh] flex items-center justify-center overflow-hidden bg-[var(--color-royal-ink)] text-center pt-24 md:pt-28 pb-[calc(var(--tabbar-offset)+4.5rem)] md:pb-28"
       aria-label="Washington seamless gutter installation"
     >

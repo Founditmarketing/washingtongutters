@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Phone, MessageSquare, FileText } from "lucide-react";
 import { SITE } from "../../data/site";
 
@@ -8,13 +10,38 @@ import { SITE } from "../../data/site";
  * three actions that actually convert: a prominent "Free Estimate" button plus
  * round Call and Text buttons. Deep-navy translucent surface with a red top
  * hairline so it reads as the brand's action strip.
+ *
+ * Visibility: stays tucked away while the hero (`[data-hero]`) is on screen and
+ * slides up once the visitor scrolls past it. Re-attaches its observer on route
+ * change; on any page without a hero it just shows immediately.
  */
 export default function MobileTabBar({ onEstimate }) {
+  const { pathname } = useLocation();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.querySelector("[data-hero]");
+    if (!hero) {
+      setVisible(true);
+      return;
+    }
+    setVisible(false);
+    const io = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    io.observe(hero);
+    return () => io.disconnect();
+  }, [pathname]);
+
   return (
     <nav
-      className="md:hidden fixed inset-x-0 bottom-0 z-40 tabbar-spring-in border-t border-[var(--color-copper)]/40 bg-[var(--color-royal-ink)]/95 backdrop-blur-xl"
+      className={`md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-copper)]/40 bg-[var(--color-royal-ink)]/95 backdrop-blur-xl transition-transform duration-300 ease-out ${
+        visible ? "translate-y-0" : "translate-y-full pointer-events-none"
+      }`}
       style={{ paddingBottom: "var(--safe-bottom)" }}
       aria-label="Quick contact"
+      aria-hidden={!visible}
     >
       <div className="flex items-center gap-2.5 px-3 py-2.5">
         <button

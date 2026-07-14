@@ -32,6 +32,7 @@ export default function PageHero({
 
   return (
     <section
+      data-hero
       className="relative bg-[var(--color-royal-deep)] overflow-hidden"
       style={{ paddingTop: "calc(var(--safe-top) + 6.25rem)" }}
     >
