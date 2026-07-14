@@ -58,6 +58,11 @@ export const SITE = {
   /* Formatted for display in copy. */
   customersServed: "2,291",
 
+  /* Google "write a review" link (owner-provided) — opens the review panel
+   * for the business profile. Used by the "Leave us a review" button. */
+  reviewUrl:
+    "https://www.google.com/search?q=washington+gutters+4+less&rlz=1C5CHFA_enUS1003US1005&oq=washington+gutters+4+less&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGD0yBggCEEUYPNIBCTEyMDU3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8&zx=1783969955211#sv=CAESzQEKuQEStgEKd0FKaVQ0dExEeUVoZVowbUl2V3cwRXpwUnNxWUVMUTJxREJXcGFudndPTEQ4RlNoaGV0MEN3cEdFYk9USXJ5eFhzeU5xWXd5MjQ2cnc1dzcwQ0lIbGl0MmR3RE9YUnhkd0xtWUNjYVhveVRzaUFwcHV0V3RoTkQ0EhdxRGhWYXNtX0N2V3hxdHNQOGJuRjJRWRoiQURzcjlmU2RnSjJqTmZCYjQtR2R1RWVIYnhlVS1paFgwdxIEODA1MRoBMyoAMAA4AUAAGAAghs7c3gdKAhAB",
+
   social: {
     google: "",
     facebook: "",

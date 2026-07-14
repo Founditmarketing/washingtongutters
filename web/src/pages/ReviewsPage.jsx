@@ -153,12 +153,14 @@ export default function ReviewsPage() {
         )}
 
         <div className="text-center mt-10 lg:mt-14">
-          <p className="text-[var(--color-slate)]/60 mb-4 text-[14.5px]">Ready to protect your home?</p>
+          <p className="text-[var(--color-slate)]/60 mb-4 text-[14.5px]">Had a great experience with us?</p>
           <a
-            href={SITE.phone.tel}
+            href={SITE.reviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-6 py-3.5 rounded-full font-semibold shadow-lg shadow-[var(--color-copper)]/20"
           >
-            Call {SITE.phone.display} <Phone className="w-4 h-4" />
+            <Star className="w-4 h-4 fill-white" /> Leave us a review
           </a>
         </div>
       </section>
