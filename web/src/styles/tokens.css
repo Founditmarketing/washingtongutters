@@ -22,13 +22,13 @@
   --color-line: oklch(0.32 0.13 262.5 / 0.10);
   --color-line-strong: oklch(0.32 0.13 262.5 / 0.18);
 
-  /* Type families — Heritage Trade direction:
-     - Display: Barlow Condensed Black/Bold (industrial, condensed, confident)
-     - Body/UI: Manrope (clean, neutral, hyper-readable)
-     - Stamp: Roboto Condensed used inside trade-badge components */
-  --font-display: "Barlow Condensed", "Oswald", "Impact", system-ui, sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-stamp: "Roboto Condensed", "Barlow Condensed", system-ui, sans-serif;
+  /* Type families:
+     - Display: Archivo Black/Bold (modern grotesque, sturdy, confident)
+     - Body/UI: Hanken Grotesk (clean, friendly, hyper-readable)
+     - Stamp: Archivo used inside trade-badge components */
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-stamp: "Archivo", system-ui, sans-serif;
 
   /* Type scale (fluid; clamp(min, fluid, max))
      Mins are tuned so display headlines fit on iPhone SE / mini (320–375px)
@@ -54,12 +54,13 @@
   --ease-ios-spring: cubic-bezier(0.32, 0.72, 0, 1); /* iOS UISpring approximation */
   --ease-ios-emphasized: cubic-bezier(0.36, 0.66, 0.04, 1);
 
-  /* Native radii (iOS uses 12-22 for UI; we tier them) */
-  --radius-pill: 9999px;
-  --radius-card: 18px;
-  --radius-card-sm: 14px;
-  --radius-input: 12px;
-  --radius-tile: 22px;
+  /* Sharp/square aesthetic — all UI corners are crisp (0). Token names kept
+     so consuming components need no changes. */
+  --radius-pill: 0px;
+  --radius-card: 0px;
+  --radius-card-sm: 0px;
+  --radius-input: 0px;
+  --radius-tile: 0px;
 
   /* Material / blur surfaces (mirrors UIVisualEffectView styles) */
   --blur-thin: saturate(180%) blur(20px);

@@ -76,7 +76,7 @@ export default function LocationsPage() {
               </p>
               <a
                 href={SITE.phone.tel}
-                className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-full font-semibold text-sm shadow-lg shadow-[var(--color-copper)]/25"
+                className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-none font-semibold text-sm shadow-lg shadow-[var(--color-copper)]/25"
               >
                 <Phone className="w-4 h-4" /> {SITE.phone.display}
               </a>

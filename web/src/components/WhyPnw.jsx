@@ -64,7 +64,7 @@ export default function WhyPnw() {
           <div className="space-y-5">
             {POINTS.map(({ icon: Ic, title, body }) => (
               <div key={title} className="flex gap-4">
-                <div className="w-10 h-10 rounded-[10px] bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-none bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center flex-shrink-0">
                   <Ic className="w-5 h-5" />
                 </div>
                 <div>

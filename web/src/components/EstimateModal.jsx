@@ -192,7 +192,7 @@ function FormBody({ onSubmitted }) {
 function SuccessBody({ name, phone, onClose }) {
   return (
     <div className="px-6 sm:px-8 pt-2 pb-8 text-center">
-      <div className="w-14 h-14 rounded-full bg-[var(--color-copper)] text-white inline-flex items-center justify-center mx-auto mb-4 text-2xl">
+      <div className="w-14 h-14 rounded-none bg-[var(--color-copper)] text-white inline-flex items-center justify-center mx-auto mb-4 text-2xl">
         ✓
       </div>
       <h3 className="font-display text-2xl text-[var(--color-royal)] font-light mb-2">
@@ -268,7 +268,7 @@ export default function EstimateModal({ open, onClose }) {
       >
         <button
           onClick={onCloseAll}
-          className="haptic absolute top-5 right-5 w-10 h-10 rounded-full bg-[var(--color-royal)] text-white flex items-center justify-center z-10"
+          className="haptic absolute top-5 right-5 w-10 h-10 rounded-none bg-[var(--color-royal)] text-white flex items-center justify-center z-10"
           aria-label="Close"
         >
           <X className="w-5 h-5" />

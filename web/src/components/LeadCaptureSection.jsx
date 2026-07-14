@@ -1,19 +1,19 @@
 import HeroLeadForm from "./HeroLeadForm";
 
 /**
- * Mobile-only lead capture section. On the home page this sits directly under
- * the hero so the ZIP-code form has full breathing room — the previous layout
- * crammed it into the hero where the tab bar covered the CTA button.
- *
- * Desktop is unaffected: the form renders inside the hero's right column.
+ * Lead-capture section — sits directly under the (now centered) hero on every
+ * breakpoint and holds the ZIP "are we in your area?" form. The hero itself is
+ * pure brand + CTAs, so this is where the form lives for both mobile and
+ * desktop, centered with breathing room.
  */
 export default function LeadCaptureSection() {
   return (
     <section
-      className="lg:hidden bg-[var(--color-bone)] relative z-10 px-[var(--space-page-x)] py-12"
+      className="relative z-10 bg-[var(--color-royal-deep)] overflow-hidden"
       aria-label="Free estimate request"
     >
-      <div className="mx-auto max-w-[640px]">
+      <div className="absolute inset-0 grain opacity-[0.06] pointer-events-none" aria-hidden />
+      <div className="relative max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] py-10 lg:py-14">
         <HeroLeadForm />
       </div>
     </section>

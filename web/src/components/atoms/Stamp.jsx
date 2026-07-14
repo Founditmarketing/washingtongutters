@@ -34,7 +34,7 @@ export default function Stamp({
       "bg-[var(--color-royal-deep)] border-[1.5px] border-[var(--color-copper)]/80 text-[var(--color-copper)]",
   }[variant];
 
-  const shapeStyles = shape === "round" ? "rounded-full px-5 py-5 aspect-square" : "rounded-sm px-3 py-1.5";
+  const shapeStyles = shape === "round" ? "rounded-none px-5 py-5 aspect-square" : "rounded-none px-3 py-1.5";
 
   return (
     <div

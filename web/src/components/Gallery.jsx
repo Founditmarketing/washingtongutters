@@ -59,7 +59,7 @@ export default function Gallery() {
                 role="tab"
                 aria-selected={filter === f.id}
                 onClick={() => setFilter(f.id)}
-                className={`haptic px-4 py-2 text-sm font-medium rounded-full border transition-all whitespace-nowrap ${
+                className={`haptic px-4 py-2 text-sm font-medium rounded-none border transition-all whitespace-nowrap ${
                   filter === f.id
                     ? "bg-[var(--color-royal)] text-white border-[var(--color-royal)]"
                     : "bg-[var(--color-paper)] text-[var(--color-royal)] border-[var(--color-line-strong)] hover:border-[var(--color-royal)]"
@@ -93,7 +93,7 @@ export default function Gallery() {
                 className="w-full h-full object-cover graded group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal-deep)]/60 via-[var(--color-royal-deep)]/15 to-transparent" />
-              <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-[var(--color-copper)]/0 group-hover:bg-[var(--color-copper)] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+              <div className="absolute top-3 right-3 w-9 h-9 rounded-none bg-[var(--color-copper)]/0 group-hover:bg-[var(--color-copper)] flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
                 <ArrowUpRight className="w-4 h-4 text-white" />
               </div>
             </button>

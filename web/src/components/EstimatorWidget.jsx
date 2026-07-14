@@ -41,7 +41,7 @@ export default function FooterContactForm() {
   if (success) {
     return (
       <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-7 lg:p-10 text-center h-full flex flex-col items-center justify-center min-h-[300px]">
-        <div className="w-14 h-14 rounded-full bg-[var(--color-copper)] text-white flex items-center justify-center mx-auto mb-5">
+        <div className="w-14 h-14 rounded-none bg-[var(--color-copper)] text-white flex items-center justify-center mx-auto mb-5">
           <Check className="w-6 h-6" />
         </div>
         <h3 className="font-display text-3xl text-white font-light mb-3">

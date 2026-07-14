@@ -9,10 +9,11 @@ export default defineConfig({
   server: {
     host: true,
     open: true,
-    // Dedicated port — http://localhost:5173 is the Vite default; another app
-    // (often another project) often owns that URL. Avoid opening the wrong site.
-    port: 5739,
-    strictPort: true,
+    // Honor a harness-assigned PORT (auto-port preview) when present; otherwise
+    // fall back to a dedicated port (5173 is Vite's default and another app
+    // often owns it, so we avoid opening the wrong site).
+    port: process.env.PORT ? Number(process.env.PORT) : 5739,
+    strictPort: false,
     /* Don't auto-restart on .env.local writes. Our Jobber middleware rotates
      * JOBBER_REFRESH_TOKEN and persists it back to .env.local on every API
      * call, and Vite's default behavior was killing the in-flight response

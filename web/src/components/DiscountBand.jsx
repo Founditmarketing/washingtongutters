@@ -28,7 +28,7 @@ export default function DiscountBand() {
       <div className="relative max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] grid md:grid-cols-2 gap-10 lg:gap-20">
         {DISCOUNTS.map(({ tag, body, icon: Ic }) => (
           <div key={tag} className="flex items-start gap-6 text-white">
-            <div className="w-14 h-14 border border-[var(--color-copper)] text-[var(--color-copper)] flex items-center justify-center flex-shrink-0 rounded-[14px]">
+            <div className="w-14 h-14 border border-[var(--color-copper)] text-[var(--color-copper)] flex items-center justify-center flex-shrink-0 rounded-none">
               <Ic className="w-6 h-6" />
             </div>
             <div>

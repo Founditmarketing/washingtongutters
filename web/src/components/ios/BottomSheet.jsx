@@ -116,7 +116,7 @@ export default function BottomSheet({
           onPointerCancel={onPointerUp}
           className="cursor-grab active:cursor-grabbing select-none flex flex-col items-center pt-2.5 pb-1"
         >
-          <div className="w-10 h-1 rounded-full bg-[var(--color-royal)]/25" />
+          <div className="w-10 h-1 rounded-none bg-[var(--color-royal)]/25" />
           {title && (
             <div className="font-display text-[var(--color-royal)] text-base font-semibold mt-2.5">
               {title}

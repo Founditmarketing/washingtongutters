@@ -19,7 +19,7 @@ export default function NotFoundPage() {
         </p>
         <Link
           to="/"
-          className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-3.5 font-semibold rounded-full transition-all shadow-lg shadow-[var(--color-copper)]/20"
+          className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-3.5 font-semibold rounded-none transition-all shadow-lg shadow-[var(--color-copper)]/20"
         >
           <Home className="w-4 h-4" /> Back to Home
         </Link>

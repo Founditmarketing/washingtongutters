@@ -54,7 +54,7 @@ export default function ReviewsPage() {
               "{featured.text}"
             </p>
             <div className="mt-7 pt-5 border-t border-white/15 flex items-center gap-4">
-              <div className="w-11 h-11 rounded-full bg-[var(--color-copper)] text-white flex items-center justify-center font-display-bold text-lg">
+              <div className="w-11 h-11 rounded-none bg-[var(--color-copper)] text-white flex items-center justify-center font-display-bold text-lg">
                 {featured.name.charAt(0)}
               </div>
               <div>
@@ -88,7 +88,7 @@ export default function ReviewsPage() {
           </div>
           <a
             href={SITE.phone.tel}
-            className="haptic inline-flex items-center gap-2 bg-[var(--color-royal)] text-white px-4 py-2.5 rounded-full font-semibold text-[13px]"
+            className="haptic inline-flex items-center gap-2 bg-[var(--color-royal)] text-white px-4 py-2.5 rounded-none font-semibold text-[13px]"
           >
             Call {SITE.phone.display} <Phone className="w-3.5 h-3.5" />
           </a>
@@ -116,7 +116,7 @@ export default function ReviewsPage() {
                   "{r.text}"
                 </p>
                 <div className="border-t border-[var(--color-line)] pt-3 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display-bold text-sm">
+                  <div className="w-8 h-8 rounded-none bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display-bold text-sm">
                     {r.name.charAt(0)}
                   </div>
                   <div>
@@ -144,7 +144,7 @@ export default function ReviewsPage() {
             </p>
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center gap-2 bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-6 py-3.5 rounded-full font-semibold text-[14px] transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
+              className="haptic inline-flex items-center gap-2 bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-6 py-3.5 rounded-none font-semibold text-[14px] transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
             >
               Call {SITE.phone.display}
               <Phone className="w-4 h-4" />
@@ -158,7 +158,7 @@ export default function ReviewsPage() {
             href={SITE.reviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-6 py-3.5 rounded-full font-semibold shadow-lg shadow-[var(--color-copper)]/20"
+            className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-6 py-3.5 rounded-none font-semibold shadow-lg shadow-[var(--color-copper)]/20"
           >
             <Star className="w-4 h-4 fill-white" /> Leave us a review
           </a>

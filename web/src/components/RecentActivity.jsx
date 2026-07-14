@@ -35,8 +35,8 @@ export default function RecentActivity() {
       aria-atomic="true"
     >
       <span className="relative flex h-2 w-2 flex-shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-copper)] opacity-75" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-copper)]" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-[var(--color-copper)] opacity-75" />
+        <span className="relative inline-flex rounded-none h-2 w-2 bg-[var(--color-copper)]" />
       </span>
       <MapPin className="w-3.5 h-3.5 text-[var(--color-copper)]" />
       <span className="tabular-nums">

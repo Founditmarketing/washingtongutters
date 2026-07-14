@@ -33,7 +33,7 @@ function Block({ block }) {
         <ul className="my-5 space-y-2.5">
           {block.items.map((it, i) => (
             <li key={i} className="flex gap-3 text-[var(--color-slate)]/80 leading-relaxed">
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-copper)] shrink-0" />
+              <span className="mt-2 w-1.5 h-1.5 rounded-none bg-[var(--color-copper)] shrink-0" />
               <span>{it}</span>
             </li>
           ))}
@@ -159,13 +159,13 @@ export default function BlogPostPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-4 rounded-full font-display-bold uppercase tracking-tight shadow-lg shadow-[var(--color-copper)]/25"
+              className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-4 rounded-none font-display-bold uppercase tracking-tight shadow-lg shadow-[var(--color-copper)]/25"
             >
               <Phone className="w-4 h-4" /> Call {SITE.phone.display}
             </a>
             <a
               href="/contact/#estimate"
-              className="haptic inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white px-7 py-4 rounded-full font-display-bold uppercase tracking-tight transition-colors"
+              className="haptic inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white px-7 py-4 rounded-none font-display-bold uppercase tracking-tight transition-colors"
             >
               Free written estimate <ArrowRight className="w-4 h-4" />
             </a>

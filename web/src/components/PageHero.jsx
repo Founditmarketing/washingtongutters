@@ -96,7 +96,7 @@ export default function PageHero({
             {chips.map((c) => (
               <span
                 key={c}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/15 text-white/85 text-[12px] font-medium tracking-tight"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white/[0.08] border border-white/15 text-white/85 text-[12px] font-medium tracking-tight"
               >
                 {c}
               </span>

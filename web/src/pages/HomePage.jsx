@@ -31,9 +31,9 @@ export default function HomePage() {
     <>
       <SchemaJsonLd data={schemas} id="home" />
       <Hero onEstimate={openEstimate} />
+      <CityMarquee />
       <LeadCaptureSection />
       <TrustBadgeBar />
-      <CityMarquee />
       <Services />
       <Process />
       <TrustStack />

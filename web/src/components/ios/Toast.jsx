@@ -26,7 +26,7 @@ export default function Toast({ open, onClose, title, message, duration = 3500 }
         className="material-light pointer-events-auto rounded-[var(--radius-card)] shadow-2xl shadow-black/20 px-4 py-3 flex items-center gap-3 max-w-md w-full"
         style={{ animation: "toastIn 360ms var(--ease-ios-spring) both" }}
       >
-        <div className="w-8 h-8 rounded-full bg-[var(--color-copper)] text-white flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-none bg-[var(--color-copper)] text-white flex items-center justify-center flex-shrink-0">
           <Check className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">

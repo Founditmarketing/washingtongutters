@@ -89,7 +89,7 @@ export default function GalleryLightbox({ items, index, onIndex }) {
           type="button"
           onClick={(e) => { e.stopPropagation(); close(); }}
           aria-label="Close gallery"
-          className="haptic pointer-events-auto shrink-0 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+          className="haptic pointer-events-auto shrink-0 w-11 h-11 rounded-none bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
@@ -119,7 +119,7 @@ export default function GalleryLightbox({ items, index, onIndex }) {
           type="button"
           onClick={(e) => { e.stopPropagation(); prev(); }}
           aria-label="Previous photo"
-          className="haptic absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+          className="haptic absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-none bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -127,7 +127,7 @@ export default function GalleryLightbox({ items, index, onIndex }) {
           type="button"
           onClick={(e) => { e.stopPropagation(); next(); }}
           aria-label="Next photo"
-          className="haptic absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+          className="haptic absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-none bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
         >
           <ChevronRight className="w-6 h-6" />
         </button>

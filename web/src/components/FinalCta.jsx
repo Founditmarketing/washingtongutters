@@ -19,19 +19,19 @@ export default function FinalCta({ onEstimate }) {
         <div className="flex flex-wrap justify-center gap-3">
           <button
             onClick={onEstimate}
-            className="haptic inline-flex items-center gap-2.5 bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-7 py-3.5 font-semibold transition-all rounded-full shadow-xl shadow-black/10"
+            className="haptic inline-flex items-center gap-2.5 bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-7 py-3.5 font-semibold transition-all rounded-none shadow-xl shadow-black/10"
           >
             Request Free Estimate <ArrowRight className="w-5 h-5" />
           </button>
           <a
             href={SITE.phone.tel}
-            className="haptic inline-flex items-center gap-2.5 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-3.5 font-semibold transition-all rounded-full"
+            className="haptic inline-flex items-center gap-2.5 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-3.5 font-semibold transition-all rounded-none"
           >
             <Phone className="w-5 h-5" /> {SITE.phone.display}
           </a>
           <a
             href={SITE.phone.sms}
-            className="haptic inline-flex items-center gap-2.5 border border-[var(--color-line-strong)] hover:border-[var(--color-royal)] text-[var(--color-royal)] px-7 py-3.5 font-semibold transition-all rounded-full"
+            className="haptic inline-flex items-center gap-2.5 border border-[var(--color-line-strong)] hover:border-[var(--color-royal)] text-[var(--color-royal)] px-7 py-3.5 font-semibold transition-all rounded-none"
           >
             <MessageSquare className="w-5 h-5" /> Text Us
           </a>

@@ -58,7 +58,7 @@ export default function FaqPage() {
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="haptic inline-flex items-center px-3.5 py-1.5 rounded-full border border-[var(--color-line)] text-[13px] font-medium text-[var(--color-royal)] hover:border-[var(--color-copper)] hover:text-[var(--color-copper)] transition-colors"
+                className="haptic inline-flex items-center px-3.5 py-1.5 rounded-none border border-[var(--color-line)] text-[13px] font-medium text-[var(--color-royal)] hover:border-[var(--color-copper)] hover:text-[var(--color-copper)] transition-colors"
               >
                 {cat.title}
               </a>
@@ -122,13 +122,13 @@ export default function FaqPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center gap-2 bg-white text-[var(--color-royal)] px-7 py-3.5 font-semibold rounded-full transition-all hover:shadow-xl"
+              className="haptic inline-flex items-center gap-2 bg-white text-[var(--color-royal)] px-7 py-3.5 font-semibold rounded-none transition-all hover:shadow-xl"
             >
               <Phone className="w-4 h-4" /> {SITE.phone.display}
             </a>
             <a
               href="/contact/#estimate"
-              className="haptic inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-3.5 font-semibold rounded-full transition-all"
+              className="haptic inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-3.5 font-semibold rounded-none transition-all"
             >
               Free Estimate <ArrowRight className="w-4 h-4" />
             </a>

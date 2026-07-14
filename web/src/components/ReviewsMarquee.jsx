@@ -68,7 +68,7 @@ function ReviewCardMobile({ r }) {
         "{r.text}"
       </p>
       <div className="flex items-center gap-3 pt-3 mt-3 border-t border-[var(--color-line)]">
-        <div className="w-9 h-9 rounded-full bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-[14px] font-semibold shrink-0">
+        <div className="w-9 h-9 rounded-none bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-[14px] font-semibold shrink-0">
           {r.name.charAt(0)}
         </div>
         <div className="leading-tight min-w-0">
@@ -112,7 +112,7 @@ function ReviewCardDesktop({ r }) {
         "{r.text}"
       </p>
       <div className="flex items-center gap-3 pt-3 mt-3 border-t border-[var(--color-line)]">
-        <div className="w-8 h-8 rounded-full bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-[13px] font-semibold shrink-0">
+        <div className="w-8 h-8 rounded-none bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-[13px] font-semibold shrink-0">
           {r.name.charAt(0)}
         </div>
         <div className="leading-tight min-w-0">
@@ -182,7 +182,7 @@ export default function ReviewsMarquee() {
             </div>
             <Link
               to="/reviews/"
-              className="haptic inline-flex items-center justify-center gap-2 self-start sm:self-auto bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-5 py-3 rounded-full text-[13px] font-semibold transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
+              className="haptic inline-flex items-center justify-center gap-2 self-start sm:self-auto bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-5 py-3 rounded-none text-[13px] font-semibold transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
             >
               Read all reviews
               <ArrowRight className="w-3.5 h-3.5" />
@@ -259,7 +259,7 @@ export default function ReviewsMarquee() {
                 </div>
               </div>
               <div className="lg:shrink-0">
-                <span className="inline-flex items-center gap-2 bg-[var(--color-royal)] group-hover:bg-[var(--color-royal-deep)] text-white px-6 py-3.5 rounded-full font-semibold text-[14px] transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]">
+                <span className="inline-flex items-center gap-2 bg-[var(--color-royal)] group-hover:bg-[var(--color-royal-deep)] text-white px-6 py-3.5 rounded-none font-semibold text-[14px] transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]">
                   Read all reviews
                   <ExternalLink className="w-4 h-4" />
                 </span>

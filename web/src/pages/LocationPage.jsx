@@ -70,13 +70,13 @@ export default function LocationPage() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-full font-semibold text-sm shadow-lg shadow-[var(--color-copper)]/25"
+              className="haptic inline-flex items-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-none font-semibold text-sm shadow-lg shadow-[var(--color-copper)]/25"
             >
               <Phone className="w-4 h-4" /> {SITE.phone.display}
             </a>
             <a
               href="/contact/#estimate"
-              className="haptic inline-flex items-center gap-2 border border-white/30 hover:border-white text-white px-5 py-3 rounded-full font-semibold text-sm"
+              className="haptic inline-flex items-center gap-2 border border-white/30 hover:border-white text-white px-5 py-3 rounded-none font-semibold text-sm"
             >
               Free estimate <ArrowRight className="w-4 h-4" />
             </a>
@@ -259,13 +259,13 @@ export default function LocationPage() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
           <a
             href={SITE.phone.tel}
-            className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-4 rounded-full font-display-bold uppercase tracking-tight shadow-lg shadow-[var(--color-copper)]/25"
+            className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-7 py-4 rounded-none font-display-bold uppercase tracking-tight shadow-lg shadow-[var(--color-copper)]/25"
           >
             <Phone className="w-4 h-4" /> Call {SITE.phone.display}
           </a>
           <a
             href="/contact/#estimate"
-            className="haptic inline-flex items-center justify-center gap-2 border border-[var(--color-line-strong)] hover:border-[var(--color-royal)] text-[var(--color-royal)] px-7 py-4 rounded-full font-display-bold uppercase tracking-tight transition-colors"
+            className="haptic inline-flex items-center justify-center gap-2 border border-[var(--color-line-strong)] hover:border-[var(--color-royal)] text-[var(--color-royal)] px-7 py-4 rounded-none font-display-bold uppercase tracking-tight transition-colors"
           >
             Get a free estimate <ArrowRight className="w-4 h-4" />
           </a>

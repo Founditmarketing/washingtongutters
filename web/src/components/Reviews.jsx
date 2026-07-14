@@ -39,7 +39,7 @@ function ReviewCardMobile({ r, featured = false }) {
         </p>
         <div className={`mt-5 pt-4 border-t flex items-center gap-3 ${featured ? "border-white/15" : "border-[var(--color-line)]"}`}>
           <div
-            className={`w-9 h-9 rounded-full flex items-center justify-center font-display text-sm font-semibold shrink-0 ${
+            className={`w-9 h-9 rounded-none flex items-center justify-center font-display text-sm font-semibold shrink-0 ${
               featured
                 ? "bg-[var(--color-copper)] text-white"
                 : "bg-[var(--color-royal)] text-[var(--color-copper)]"
@@ -136,7 +136,7 @@ export default function Reviews() {
               "{featured.text}"
             </p>
             <div className="flex items-center gap-4 pt-6 border-t border-white/15">
-              <div className="w-11 h-11 rounded-full bg-[var(--color-copper)] text-white flex items-center justify-center font-display text-lg font-semibold">
+              <div className="w-11 h-11 rounded-none bg-[var(--color-copper)] text-white flex items-center justify-center font-display text-lg font-semibold">
                 {featured.name.charAt(0)}
               </div>
               <div>
@@ -167,7 +167,7 @@ export default function Reviews() {
                 "{r.text}"
               </p>
               <div className="pt-4 border-t border-[var(--color-line)] flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-sm font-semibold">
+                <div className="w-9 h-9 rounded-none bg-[var(--color-royal)] text-[var(--color-copper)] flex items-center justify-center font-display text-sm font-semibold">
                   {r.name.charAt(0)}
                 </div>
                 <div>

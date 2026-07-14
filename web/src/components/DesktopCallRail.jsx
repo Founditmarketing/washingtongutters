@@ -1,61 +1,69 @@
-import { useEffect, useState } from "react";
-import { Phone, MessageSquare, Calculator } from "lucide-react";
+import { useState } from "react";
+import { Phone, MessageSquare, FileText, MessageCircle, X } from "lucide-react";
 import { SITE } from "../data/site";
 
 /*
- * Always-on right-edge contact rail (desktop only). Appears after the user
- * scrolls past the hero. Subtle, vertical, copper-ringed. Never obscures
- * content; positioned in the gutter outside the 1400px content cap.
+ * Desktop floating action button (bottom-right corner). Tapping it opens a
+ * small panel with the three contact actions — Free Estimate, Call, Text.
+ * Replaces the old right-edge rail. Desktop only; mobile has the bottom bar.
  */
-
 export default function DesktopCallRail({ onEstimate }) {
-  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.7);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const rowBase =
+    "haptic flex items-center gap-3 w-full px-4 py-3 text-[14px] font-semibold text-white transition-colors";
 
   return (
-    <div
-      className={`hidden lg:flex fixed right-5 top-1/2 -translate-y-1/2 z-40 flex-col gap-2 transition-all duration-500 ${
-        show ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
-      }`}
-      aria-label="Quick contact"
-    >
-      <a
-        href={SITE.phone.tel}
-        className="group bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white w-12 h-12 flex items-center justify-center transition-all hover:w-auto hover:px-4 hover:gap-2 shadow-lg shadow-black/30"
-        aria-label={`Call ${SITE.phone.display}`}
-      >
-        <Phone className="w-5 h-5" />
-        <span 
-          className="hidden group-hover:inline whitespace-nowrap text-[15px]"
-          style={{ fontFamily: "system-ui, -apple-system, Arial, sans-serif", fontWeight: 700 }}
+    <div className="hidden lg:block">
+      {/* Click-away layer */}
+      {open && (
+        <button
+          className="fixed inset-0 z-40 cursor-default"
+          aria-label="Close contact menu"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      <div className="fixed right-6 bottom-6 z-50 flex flex-col items-end gap-3">
+        {/* Options panel */}
+        {open && (
+          <div className="w-60 bg-[var(--color-royal-ink)] border border-white/10 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.6)] fade-up overflow-hidden">
+            <div className="px-4 py-2.5 text-[10px] tracking-[0.28em] uppercase font-bold text-[var(--color-copper)] border-b border-white/10">
+              Get in touch
+            </div>
+            <button
+              onClick={() => { setOpen(false); onEstimate?.(); }}
+              className={`${rowBase} bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)]`}
+            >
+              <FileText className="w-5 h-5" /> Free Estimate
+            </button>
+            <a
+              href={SITE.phone.tel}
+              onClick={() => setOpen(false)}
+              className={`${rowBase} hover:bg-white/5`}
+            >
+              <Phone className="w-5 h-5 text-[var(--color-copper)]" /> Call {SITE.phone.display}
+            </a>
+            <a
+              href={SITE.phone.sms}
+              onClick={() => setOpen(false)}
+              className={`${rowBase} hover:bg-white/5`}
+            >
+              <MessageSquare className="w-5 h-5 text-[var(--color-copper)]" /> Text Us
+            </a>
+          </div>
+        )}
+
+        {/* Floating button */}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-label={open ? "Close contact menu" : "Contact us"}
+          className="haptic-primary w-14 h-14 flex items-center justify-center bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white shadow-[0_14px_34px_-8px_rgba(0,0,0,0.55)] ring-1 ring-white/15"
         >
-          {SITE.phone.display}
-        </span>
-      </a>
-      <a
-        href={SITE.phone.sms}
-        className="group bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white w-12 h-12 flex items-center justify-center transition-all hover:w-auto hover:px-4 hover:gap-2 shadow-lg shadow-black/30"
-        aria-label="Text us"
-      >
-        <MessageSquare className="w-5 h-5" />
-        <span className="hidden group-hover:inline whitespace-nowrap text-sm font-semibold">Text</span>
-      </a>
-      <button
-        onClick={onEstimate}
-        className="group bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white w-12 h-12 flex items-center justify-center transition-all hover:w-auto hover:px-4 hover:gap-2 shadow-lg shadow-black/30"
-        aria-label="Open estimate form"
-      >
-        <Calculator className="w-5 h-5" />
-        <span className="hidden group-hover:inline whitespace-nowrap text-sm font-semibold">
-          Free Estimate
-        </span>
-      </button>
+          {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+        </button>
+      </div>
     </div>
   );
 }

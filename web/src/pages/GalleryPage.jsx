@@ -70,7 +70,7 @@ export default function GalleryPage() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setFilter(f.id)}
-                  className={`haptic whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-semibold transition-all border ${
+                  className={`haptic whitespace-nowrap px-4 py-2 rounded-none text-[13px] font-semibold transition-all border ${
                     active
                       ? "bg-[var(--color-royal)] text-white border-[var(--color-royal)]"
                       : "bg-[var(--color-paper)] text-[var(--color-royal)]/80 border-[var(--color-line-strong)] hover:border-[var(--color-royal)]"

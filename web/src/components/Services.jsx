@@ -26,10 +26,10 @@ function ServiceCardMobile({ s, i }) {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal)]/85 via-[var(--color-royal)]/15 to-transparent" />
-        <div className="absolute top-3.5 left-3.5 w-10 h-10 rounded-[14px] bg-[var(--color-copper)] flex items-center justify-center text-white shadow-lg shadow-black/20">
+        <div className="absolute top-3.5 left-3.5 w-10 h-10 rounded-none bg-[var(--color-copper)] flex items-center justify-center text-white shadow-lg shadow-black/20">
           <Ic className="w-5 h-5" />
         </div>
-        <div className="absolute top-3.5 right-3.5 px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-md text-white text-[10px] tracking-[0.2em] uppercase font-semibold">
+        <div className="absolute top-3.5 right-3.5 px-2 py-0.5 rounded-none bg-white/15 backdrop-blur-md text-white text-[10px] tracking-[0.2em] uppercase font-semibold">
           0{i + 1}
         </div>
         <div className="absolute bottom-3.5 left-4 right-4 text-white">
@@ -135,7 +135,7 @@ export default function Services() {
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal-deep)] via-[var(--color-royal)]/40 to-transparent" />
           <div className="relative h-full flex flex-col justify-between p-7 lg:p-10 text-white">
             <div className="flex items-start justify-between">
-              <div className="w-14 h-14 rounded-[14px] bg-[var(--color-copper)] flex items-center justify-center">
+              <div className="w-14 h-14 rounded-none bg-[var(--color-copper)] flex items-center justify-center">
                 <PrimaryIcon className="w-6 h-6" />
               </div>
               <div className="text-white/70 text-[10px] tracking-[0.25em] uppercase font-semibold">
@@ -170,7 +170,7 @@ export default function Services() {
                     sizes="240px"
                     className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-3 left-3 w-9 h-9 rounded-[10px] bg-[var(--color-copper)] flex items-center justify-center text-white">
+                  <div className="absolute top-3 left-3 w-9 h-9 rounded-none bg-[var(--color-copper)] flex items-center justify-center text-white">
                     <Ic className="w-4 h-4" />
                   </div>
                 </div>

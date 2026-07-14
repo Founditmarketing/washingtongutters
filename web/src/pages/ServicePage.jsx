@@ -151,7 +151,7 @@ export default function ServicePage() {
         </div>
         <div className="relative max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] pb-12 lg:pb-20">
           <div className="flex items-center gap-3 mb-5">
-            <span className="inline-flex w-9 h-9 rounded-[10px] bg-[var(--color-copper)] text-white items-center justify-center">
+            <span className="inline-flex w-9 h-9 rounded-none bg-[var(--color-copper)] text-white items-center justify-center">
               <Icon className="w-4 h-4" />
             </span>
             <Eyebrow color="white">{service.title}</Eyebrow>
@@ -165,13 +165,13 @@ export default function ServicePage() {
           <div className="flex flex-col sm:flex-row gap-3 mt-7">
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-6 py-3.5 font-display-bold uppercase tracking-tight rounded-full transition-all shadow-[0_18px_36px_-10px_oklch(0.62_0.10_42_/_0.55)]"
+              className="haptic inline-flex items-center justify-center gap-2 bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-6 py-3.5 font-display-bold uppercase tracking-tight rounded-none transition-all shadow-[0_18px_36px_-10px_oklch(0.62_0.10_42_/_0.55)]"
             >
               <Phone className="w-4 h-4" /> Call {SITE.phone.display}
             </a>
             <a
               href="/contact/#estimate"
-              className="haptic inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white px-6 py-3.5 font-display-bold uppercase tracking-tight rounded-full transition-all"
+              className="haptic inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white px-6 py-3.5 font-display-bold uppercase tracking-tight rounded-none transition-all"
             >
               Free written estimate <ArrowRight className="w-4 h-4" />
             </a>
@@ -202,13 +202,13 @@ export default function ServicePage() {
               {content.intro || service.desc}
             </p>
             <div className="flex flex-wrap gap-3">
-              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-full">
+              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-none">
                 Local &amp; Family-Owned
               </span>
-              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-full">
+              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-none">
                 WA Licensed &amp; Insured
               </span>
-              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-full">
+              <span className="px-3 py-1.5 bg-[var(--color-royal-tint)] text-[var(--color-royal)] text-sm font-medium rounded-none">
                 {SITE.rating.value}★ Rated · {SITE.customersServed}+ Customers
               </span>
             </div>
@@ -324,13 +324,13 @@ export default function ServicePage() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href={SITE.phone.tel}
-              className="haptic inline-flex items-center gap-2 bg-white text-[var(--color-royal)] px-7 py-3.5 font-semibold rounded-full transition-all hover:shadow-xl"
+              className="haptic inline-flex items-center gap-2 bg-white text-[var(--color-royal)] px-7 py-3.5 font-semibold rounded-none transition-all hover:shadow-xl"
             >
               <Phone className="w-4 h-4" /> {SITE.phone.display}
             </a>
             <a
               href="/#estimator"
-              className="haptic inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-3.5 font-semibold rounded-full transition-all"
+              className="haptic inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-3.5 font-semibold rounded-none transition-all"
             >
               Free Estimate <ArrowRight className="w-4 h-4" />
             </a>

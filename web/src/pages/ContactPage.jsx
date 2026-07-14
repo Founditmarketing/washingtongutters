@@ -99,7 +99,7 @@ export default function ContactPage() {
             <Eyebrow>Reach Us</Eyebrow>
             <div className="mt-4 grid grid-cols-1 gap-4 max-w-md">
               <a href={SITE.phone.tel} className="haptic flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-[10px] bg-[var(--color-royal-tint)] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-none bg-[var(--color-royal-tint)] flex items-center justify-center">
                   <Phone className="w-4 h-4 text-[var(--color-royal)]" />
                 </div>
                 <div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </div>
               </a>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-[10px] bg-[var(--color-royal-tint)] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-none bg-[var(--color-royal-tint)] flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-[var(--color-royal)]" />
                 </div>
                 <div>
