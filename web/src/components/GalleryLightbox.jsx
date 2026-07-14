@@ -80,7 +80,7 @@ export default function GalleryLightbox({ items, index, onIndex }) {
             </div>
           )}
           {item.label && (
-            <h2 className="font-display-bold uppercase tracking-tight text-lg sm:text-xl lg:text-2xl leading-tight max-w-xl">
+            <h2 className="font-display-bold tracking-tight text-lg sm:text-xl lg:text-2xl leading-tight max-w-xl">
               {item.label}
             </h2>
           )}

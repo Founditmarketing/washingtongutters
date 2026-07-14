@@ -16,7 +16,7 @@ export default function EstimatorSection({ onEstimate }) {
           <span className="inline-flex items-center gap-2 text-[var(--color-copper)] text-xs tracking-[0.3em] uppercase font-semibold mb-4">
             <ClipboardList className="w-3.5 h-3.5" /> Free Estimate
           </span>
-          <h2 className="font-display-black uppercase text-display-lg mb-6">
+          <h2 className="font-display-black text-display-lg mb-6">
             Get a Free
             <br />
             <span className="text-[var(--color-copper)]">Estimate.</span>

@@ -11,7 +11,7 @@ export default function NotFoundPage() {
         <div className="font-display-black text-[12rem] leading-none text-[var(--color-royal)]/10 select-none">
           404
         </div>
-        <h1 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] -mt-16 mb-4">
+        <h1 className="font-display-black text-display-sm text-[var(--color-royal)] -mt-16 mb-4">
           Page Not <span className="text-[var(--color-copper)]">Found.</span>
         </h1>
         <p className="text-[var(--color-slate)]/65 text-lg mb-8 max-w-md mx-auto">

@@ -50,7 +50,7 @@ export default function WhyPnw() {
           </div>
           {/* Pattern break: lockup of three trade nouns, no amber-word split,
               no period-period treatment. Different from every other section. */}
-          <h2 className="font-display-black uppercase text-display-md text-[var(--color-royal)] mb-3 leading-[0.92] tracking-[-0.015em]">
+          <h2 className="font-display-black text-display-md text-[var(--color-royal)] mb-3 leading-[0.92] tracking-[-0.015em]">
             Rain. Moss. Cedar.
           </h2>
           <p className="font-editorial text-[var(--color-slate)]/65 text-[20px] lg:text-[22px] leading-[1.35] mb-6 max-w-md">

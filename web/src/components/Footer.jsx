@@ -116,22 +116,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* MASSIVE WORDMARK MOMENT */}
-        <div
-          className="my-12 lg:my-16 select-none pointer-events-none"
-          aria-hidden
-        >
-          <div className="font-display-black uppercase text-white/[0.08] leading-[0.82] tracking-[-0.04em] text-[18vw] lg:text-[14vw]">
-            Washington
-            <br />
-            Gutters
-            <br />
-            <span className="text-[var(--color-copper)]/30">4 Less.</span>
-          </div>
-        </div>
-
         {/* Legal row */}
-        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-white/45">
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-white/45">
           <div className="font-display-bold uppercase tracking-wider">
             © {year} {SITE.legalName}
             {SITE.license && ` · WA Lic #${SITE.license}`}

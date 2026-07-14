@@ -79,7 +79,7 @@ export default function FaqPage() {
               >
                 <div className="mb-6">
                   <Eyebrow>{`0${ci + 1}`.slice(-2)} · {cat.title}</Eyebrow>
-                  <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-3">
+                  <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-3">
                     {cat.title}
                   </h2>
                 </div>
@@ -113,7 +113,7 @@ export default function FaqPage() {
       {/* ── CTA BAND ── */}
       <section className="bg-[var(--color-copper)] py-16">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] text-center">
-          <h2 className="font-display-black uppercase text-display-sm text-white mb-4">
+          <h2 className="font-display-black text-display-sm text-white mb-4">
             Still have a question?
           </h2>
           <p className="text-white/85 text-lg mb-8 max-w-xl mx-auto">

@@ -18,13 +18,13 @@ function Block({ block }) {
   switch (block.t) {
     case "h2":
       return (
-        <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-10 mb-4 leading-[1.05]">
+        <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-10 mb-4 leading-[1.05]">
           {block.text}
         </h2>
       );
     case "h3":
       return (
-        <h3 className="font-display-bold uppercase text-xl text-[var(--color-royal)] mt-8 mb-3">
+        <h3 className="font-display-bold text-xl text-[var(--color-royal)] mt-8 mb-3">
           {block.text}
         </h3>
       );
@@ -123,7 +123,7 @@ export default function BlogPostPage() {
             <div className="text-[var(--color-copper)] text-[10px] tracking-[0.32em] uppercase font-bold mb-3">
               How It Works
             </div>
-            <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)]">
+            <h2 className="font-display-black text-display-sm text-[var(--color-royal)]">
               Three steps. <span className="text-[var(--color-copper)]">Zero hassle.</span>
             </h2>
           </div>
@@ -148,7 +148,7 @@ export default function BlogPostPage() {
       <section className="py-[var(--space-section-lg)] bg-[var(--color-royal-deep)] relative overflow-hidden">
         <div className="absolute inset-0 grain opacity-10 pointer-events-none" aria-hidden />
         <div className="relative max-w-[var(--max-prose)] mx-auto px-[var(--space-page-x)] text-center">
-          <h2 className="font-display-black uppercase text-display-sm text-white leading-[0.95]">
+          <h2 className="font-display-black text-display-sm text-white leading-[0.95]">
             Don't Gamble with Your Home's{" "}
             <span className="text-[var(--color-copper)]">First Line of Defense.</span>
           </h2>
@@ -176,7 +176,7 @@ export default function BlogPostPage() {
       {/* ── MORE POSTS ── */}
       <section className="py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
         <div className="flex items-end justify-between mb-8">
-          <h2 className="font-display-black uppercase text-2xl text-[var(--color-royal)]">
+          <h2 className="font-display-black text-2xl text-[var(--color-royal)]">
             More from the blog
           </h2>
           <Link
@@ -206,7 +206,7 @@ export default function BlogPostPage() {
                 <div className="text-[var(--color-copper)] text-[10px] tracking-[0.14em] uppercase font-semibold mb-1.5">
                   {p.category}
                 </div>
-                <h3 className="font-display-bold uppercase text-[15px] text-[var(--color-royal)] leading-tight">
+                <h3 className="font-display-bold text-[15px] text-[var(--color-royal)] leading-tight">
                   {p.title}
                 </h3>
               </div>

@@ -153,7 +153,7 @@ export default function ReviewsMarquee() {
               <Star className="w-4 h-4 fill-[var(--color-copper)]" />
               What Neighbors Say
             </div>
-            <h2 className="font-display-black uppercase text-display-sm lg:text-display-md text-[var(--color-royal)] leading-[0.95]">
+            <h2 className="font-display-black text-display-sm lg:text-display-md text-[var(--color-royal)] leading-[0.95]">
               Five stars.
               <br />
               <span className="text-[var(--color-copper)]">Earned slowly.</span>

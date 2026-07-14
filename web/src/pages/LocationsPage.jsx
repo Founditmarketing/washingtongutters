@@ -47,7 +47,7 @@ export default function LocationsPage() {
                   Washington
                 </span>
               </div>
-              <h2 className="font-display-black uppercase text-2xl text-[var(--color-royal)] leading-tight mb-3">
+              <h2 className="font-display-black text-2xl text-[var(--color-royal)] leading-tight mb-3">
                 {loc.county}
               </h2>
               <p className="text-[var(--color-slate)]/70 text-[14.5px] leading-relaxed mb-5">
@@ -68,7 +68,7 @@ export default function LocationsPage() {
           <div className="flex flex-col justify-center bg-[var(--color-royal-deep)] rounded-[var(--radius-tile)] p-7 relative overflow-hidden">
             <div className="absolute inset-0 grain opacity-10 pointer-events-none" aria-hidden />
             <div className="relative">
-              <h2 className="font-display-black uppercase text-2xl text-white leading-tight mb-3">
+              <h2 className="font-display-black text-2xl text-white leading-tight mb-3">
                 Not sure if we<br />reach you?
               </h2>
               <p className="text-white/70 text-[14.5px] leading-relaxed mb-6">

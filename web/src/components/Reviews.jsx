@@ -76,7 +76,7 @@ export default function Reviews() {
             <div className="mb-4">
               <Eyebrow>What Neighbors Say</Eyebrow>
             </div>
-            <h2 className="font-display-black uppercase text-display-lg text-[var(--color-royal)]">
+            <h2 className="font-display-black text-display-lg text-[var(--color-royal)]">
               Five stars.
               <br />
               <span className="text-[var(--color-copper)]">Earned slowly.</span>

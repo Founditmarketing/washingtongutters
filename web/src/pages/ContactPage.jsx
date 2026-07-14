@@ -149,7 +149,7 @@ export default function ContactPage() {
                 <div className="text-[var(--color-copper)] text-[10px] tracking-[0.32em] uppercase font-bold mb-2">
                   Online Estimator
                 </div>
-                <h2 className="font-display-black uppercase text-2xl lg:text-3xl text-white mb-2 leading-tight">
+                <h2 className="font-display-black text-2xl lg:text-3xl text-white mb-2 leading-tight">
                   Free written estimate
                 </h2>
                 <p className="text-white/65 text-[13.5px] lg:text-sm mb-6">
@@ -166,7 +166,7 @@ export default function ContactPage() {
       <section className="py-[var(--space-section-md)] bg-[var(--color-royal-deep)]">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow color="white">Service Areas</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-white mt-4 mb-4">
+          <h2 className="font-display-black text-display-sm text-white mt-4 mb-4">
             Anchored in Tacoma. <span className="text-[var(--color-copper)]">Across the Puget Sound.</span>
           </h2>
           <p className="text-white/65 mb-10 max-w-xl">

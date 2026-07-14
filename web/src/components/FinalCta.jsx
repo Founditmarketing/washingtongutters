@@ -9,7 +9,7 @@ export default function FinalCta({ onEstimate }) {
           <span className="h-px w-8 bg-[var(--color-copper)]" /> Get Started{" "}
           <span className="h-px w-8 bg-[var(--color-copper)]" />
         </span>
-        <h2 className="font-display-black uppercase text-display-lg text-[var(--color-royal)] mb-7">
+        <h2 className="font-display-black text-display-lg text-[var(--color-royal)] mb-7">
           Ready when <span className="text-[var(--color-copper)]">you are.</span>
         </h2>
         <p className="text-[var(--color-slate)]/75 text-lg max-w-2xl mx-auto mb-10">

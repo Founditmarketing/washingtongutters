@@ -70,7 +70,7 @@ export default function PageHero({
           </div>
         )}
 
-        <h1 className="font-display-black uppercase text-display-lg text-white mt-4 max-w-3xl">
+        <h1 className="font-display-black text-display-lg text-white mt-4 max-w-3xl">
           {titleParts.map((part, i) =>
             part.accent ? (
               <span key={i} className="text-[var(--color-copper)]">{part.text}</span>

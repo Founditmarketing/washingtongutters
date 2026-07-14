@@ -156,7 +156,7 @@ export default function ServicePage() {
             </span>
             <Eyebrow color="white">{service.title}</Eyebrow>
           </div>
-          <h1 className="font-display-black uppercase text-display-lg text-white max-w-3xl leading-[0.92] tracking-[-0.015em]">
+          <h1 className="font-display-black text-display-lg text-white max-w-3xl leading-[0.92] tracking-[-0.015em]">
             {content.hero || service.title}
           </h1>
           <p className="text-white/75 text-[16px] lg:text-lg leading-relaxed mt-5 max-w-2xl">
@@ -194,7 +194,7 @@ export default function ServicePage() {
           </div>
           <div className="lg:col-span-6">
             <Eyebrow>Why Choose Us</Eyebrow>
-            <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-6">
+            <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-6">
               We Do One Thing<br />
               <span className="text-[var(--color-copper)]">Better Than Anyone.</span>
             </h2>
@@ -221,7 +221,7 @@ export default function ServicePage() {
         <section className="py-[var(--space-section-md)] bg-[var(--color-royal-deep)]">
           <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
             <Eyebrow color="white">Benefits</Eyebrow>
-            <h2 className="font-display-black uppercase text-display-sm text-white mt-4 mb-12">
+            <h2 className="font-display-black text-display-sm text-white mt-4 mb-12">
               Why <span className="text-[var(--color-copper)]">{service.title}?</span>
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -244,7 +244,7 @@ export default function ServicePage() {
       {content.process && (
         <section className="py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow>Our Process</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-12">
+          <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-12">
             How it <span className="text-[var(--color-copper)]">works.</span>
           </h2>
           <div className="grid gap-8 lg:gap-6">
@@ -275,7 +275,7 @@ export default function ServicePage() {
         <section className="py-[var(--space-section-md)] bg-[var(--color-paper)]">
           <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
             <Eyebrow>Materials</Eyebrow>
-            <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-10">
+            <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-10">
               Premium <span className="text-[var(--color-copper)]">Options.</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
@@ -296,7 +296,7 @@ export default function ServicePage() {
       {/* ── SERVICE AREAS ── */}
       <section className="py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
         <Eyebrow>Service Areas</Eyebrow>
-        <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-8">
+        <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-8">
           Serving <span className="text-[var(--color-copper)]">{SITE.countiesServed.length} Counties.</span>
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -315,7 +315,7 @@ export default function ServicePage() {
       {/* ── CTA BAND ── */}
       <section className="bg-[var(--color-copper)] py-16">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] text-center">
-          <h2 className="font-display-black uppercase text-display-sm text-white mb-4">
+          <h2 className="font-display-black text-display-sm text-white mb-4">
             Ready to get started?
           </h2>
           <p className="text-white/85 text-lg mb-8 max-w-xl mx-auto">

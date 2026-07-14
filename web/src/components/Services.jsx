@@ -1,199 +1,132 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Eyebrow from "./atoms/Eyebrow";
 import ResponsiveImg from "./atoms/ResponsiveImg";
-import HorizontalSnap from "./ios/HorizontalSnap";
 import { SERVICES } from "../data/services";
+import { useCarousel } from "../hooks/useCarousel";
 
 /*
- * Mobile: native iOS-style horizontal snap rail with page-indicator dots.
- * Each card has tile radii (22px) and feels like a Photos app cell.
- * Desktop: asymmetric editorial — 1 featured full-bleed + 3 dense side-stacked.
+ * Services — a full-bleed poster carousel. The first card lines up with the
+ * page's content gutter; the rest run off the right edge of the viewport so
+ * there's always a card being cut off, inviting the swipe. One card component
+ * serves every breakpoint: swipe + dots on mobile, arrows + dots on desktop.
  */
-
-function ServiceCardMobile({ s, i }) {
+function ServicePoster({ s, i, total }) {
   const Ic = s.icon;
   return (
     <Link
       to={`/services/${s.slug}/`}
-      className="haptic group block w-[78vw] sm:w-[400px] bg-[var(--color-paper)] rounded-[var(--radius-tile)] overflow-hidden border border-[var(--color-line)] mob-service-card mob-shimmer"
+      data-slide
+      className="haptic group relative block shrink-0 snap-start overflow-hidden bg-[var(--color-royal)] w-[80vw] sm:w-[360px] lg:w-[400px] aspect-[4/5]"
     >
-      <div className="relative aspect-[5/4] overflow-hidden bg-[var(--color-royal)]">
-        <ResponsiveImg
-          base={s.image}
-          alt={s.photoAlt}
-          sizes="78vw"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal)]/85 via-[var(--color-royal)]/15 to-transparent" />
-        <div className="absolute top-3.5 left-3.5 w-10 h-10 rounded-none bg-[var(--color-copper)] flex items-center justify-center text-white shadow-lg shadow-black/20">
+      <ResponsiveImg
+        base={s.image}
+        alt={s.photoAlt}
+        sizes="(max-width: 640px) 80vw, 400px"
+        className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.05] transition-all duration-700"
+      />
+      {/* Navy scrim keeps the bottom text legible over any photo. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal-ink)] via-[var(--color-royal-deep)]/45 to-[var(--color-royal-deep)]/5" />
+
+      {/* Top row — index + icon chip */}
+      <div className="absolute top-0 inset-x-0 flex items-start justify-between p-5">
+        <span className="font-mono text-[12px] tracking-[0.2em] text-white/85">
+          {String(i + 1).padStart(2, "0")}
+          <span className="text-white/40"> / {total}</span>
+        </span>
+        <span className="w-11 h-11 bg-[var(--color-copper)] flex items-center justify-center text-white shrink-0">
           <Ic className="w-5 h-5" />
-        </div>
-        <div className="absolute top-3.5 right-3.5 px-2 py-0.5 rounded-none bg-white/15 backdrop-blur-md text-white text-[10px] tracking-[0.2em] uppercase font-semibold">
-          0{i + 1}
-        </div>
-        <div className="absolute bottom-3.5 left-4 right-4 text-white">
-          <h3 className="font-display text-xl font-light leading-tight">{s.title}</h3>
-        </div>
+        </span>
       </div>
-      <div className="p-5">
-        <p className="text-[var(--color-slate)]/70 text-[14px] leading-relaxed">
+
+      {/* Copper rule that wipes across the base on hover */}
+      <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-[var(--color-copper)] group-hover:w-full transition-all duration-500" />
+
+      {/* Bottom — title + one-line pitch + arrow */}
+      <div className="absolute bottom-0 inset-x-0 p-6 text-white">
+        <h3 className="font-display tracking-tight text-[22px] lg:text-[26px] leading-[1.05] mb-2">
+          {s.title}
+        </h3>
+        <p className="text-white/70 text-[14px] leading-snug line-clamp-2 mb-4">
           {s.short || s.desc}
         </p>
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[var(--color-copper)] font-semibold text-[13px]">
-          Learn more <ArrowUpRight className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-1.5 text-[var(--color-copper)] font-display-bold uppercase tracking-tight text-[13px] group-hover:gap-2.5 transition-all">
+          Learn more <ArrowUpRight className="w-4 h-4" />
         </span>
       </div>
     </Link>
   );
 }
 
+const NAV_BTN =
+  "haptic w-11 h-11 flex items-center justify-center border border-[var(--color-line-strong)] text-[var(--color-royal)] hover:bg-[var(--color-royal)] hover:text-white hover:border-[var(--color-royal)] transition-all disabled:opacity-30 disabled:pointer-events-none";
+
 export default function Services() {
-  const featured = SERVICES;
-  const [primary, ...rest] = featured;
-  const total = String(featured.length).padStart(2, "0");
-  const PrimaryIcon = primary.icon;
+  const total = String(SERVICES.length).padStart(2, "0");
+  const { trackRef, active, atStart, atEnd, step, goTo, syncState } = useCarousel();
 
   return (
-    <section
-      id="services"
-      className="py-[var(--space-section-lg)] max-w-[var(--max-content)] mx-auto"
-    >
-      <div className="px-[var(--space-page-x)]">
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-16 mb-10 lg:mb-14">
-          <div className="lg:col-span-5" data-reveal>
+    <section id="services" className="py-[var(--space-section-lg)] overflow-hidden">
+      <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8 lg:mb-12">
+          <div className="max-w-2xl" data-reveal>
             <div className="mb-4">
               <Eyebrow>What We Do</Eyebrow>
             </div>
-            <h2 className="font-display-black uppercase text-display-lg text-[var(--color-royal)]">
-              What we
-              <br />
-              <span className="text-[var(--color-copper)]">do.</span>
+            <h2 className="font-display-black text-display-lg text-[var(--color-royal)] leading-[0.95]">
+              What we <span className="text-[var(--color-copper)]">do.</span>
             </h2>
-            {/* Kicker: bridges the display headline and the long body. Same
-                family as body but heavier weight + slightly larger so the eye
-                lands here next, not on the body block directly. */}
-            <p className="hidden lg:block text-[var(--color-slate)]/85 text-[20px] font-medium leading-snug mt-5 max-w-md">
-              Five things we install. Five things we install well.
+            <p className="text-[var(--color-slate)]/75 text-[16px] lg:text-lg leading-relaxed mt-5">
+              Every job is custom-formed continuous aluminum, sized to move the volume of water the
+              Pacific Northwest throws at your roof. No sectional kits. No subcontractors. We build it
+              on your driveway and install it in a day.
             </p>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 flex items-end" data-reveal>
-            <p className="text-[var(--color-slate)]/75 text-[16px] lg:text-lg leading-relaxed">
-              Every job is custom-formed continuous aluminum, sized to actually move the volume of
-              water the Pacific Northwest throws at your roof. We don't sell sectional kits. We
-              don't subcontract. We show up, build it on your driveway, and install it in a day.
-            </p>
+
+          {/* Desktop nav arrows — mobile swipes instead. */}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
+            <button onClick={() => step(-1)} disabled={atStart} aria-label="Previous services" className={NAV_BTN}>
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button onClick={() => step(1)} disabled={atEnd} aria-label="Next services" className={NAV_BTN}>
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* MOBILE scroll hint — shown only below lg breakpoint */}
-      <div className="lg:hidden px-[var(--space-page-x)] mb-3 flex items-center gap-2">
-        <span className="text-[var(--color-copper)] text-[11px] tracking-[0.25em] uppercase font-semibold">
-          Swipe to explore
-        </span>
-        <div style={{ animation: "swipeNudge 1.6s cubic-bezier(0.16,1,0.3,1) 0.5s infinite" }}>
-          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
-            <path d="M1 7h14M11 2l5 5-5 5" stroke="var(--color-copper)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        <style>{`
-          @keyframes swipeNudge {
-            0%   { transform: translateX(0);     opacity: 1; }
-            40%  { transform: translateX(6px);   opacity: 0.5; }
-            60%  { transform: translateX(-2px);  opacity: 1; }
-            100% { transform: translateX(0);     opacity: 1; }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            @keyframes swipeNudge { from {} to {} }
-          }
-        `}</style>
+      {/* Full-bleed track — left-aligned to the content gutter, overflowing right. */}
+      <div
+        ref={trackRef}
+        onScroll={syncState}
+        className="no-scrollbar flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory pb-2"
+        style={{
+          paddingLeft: "var(--gutter-inline)",
+          paddingRight: "var(--space-page-x)",
+          scrollPaddingLeft: "var(--gutter-inline)",
+        }}
+      >
+        {SERVICES.map((s, i) => (
+          <ServicePoster key={s.slug} s={s} i={i} total={total} />
+        ))}
       </div>
 
-      {/* MOBILE — horizontal snap rail */}
-      <div className="lg:hidden px-[var(--space-page-x)]">
-        <HorizontalSnap>
-          {featured.map((s, i) => (
-            <ServiceCardMobile key={s.slug} s={s} i={i} />
-          ))}
-        </HorizontalSnap>
-      </div>
-
-
-      {/* DESKTOP — asymmetric editorial layout */}
-      <div className="hidden lg:grid grid-cols-12 gap-5 px-[var(--space-page-x)]">
-        <Link
-          to={`/services/${primary.slug}/`}
-          className="group col-span-7 relative overflow-hidden bg-[var(--color-royal)] rounded-[var(--radius-tile)] aspect-[4/3] lg:aspect-auto lg:min-h-[560px] block"
-        >
-          <ResponsiveImg
-            base={primary.image}
-            alt={primary.photoAlt}
-            sizes="(max-width: 1024px) 100vw, 800px"
-            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700"
+      {/* Progress dots */}
+      <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] mt-6 flex items-center justify-center gap-2">
+        {SERVICES.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Go to service ${i + 1}`}
+            aria-current={i === active ? "true" : "false"}
+            onClick={() => goTo(i)}
+            className={`h-1.5 rounded-none transition-all ${
+              i === active
+                ? "w-7 bg-[var(--color-copper)]"
+                : "w-2.5 bg-[var(--color-royal)]/25 hover:bg-[var(--color-royal)]/45"
+            }`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-royal-deep)] via-[var(--color-royal)]/40 to-transparent" />
-          <div className="relative h-full flex flex-col justify-between p-7 lg:p-10 text-white">
-            <div className="flex items-start justify-between">
-              <div className="w-14 h-14 rounded-none bg-[var(--color-copper)] flex items-center justify-center">
-                <PrimaryIcon className="w-6 h-6" />
-              </div>
-              <div className="text-white/70 text-[10px] tracking-[0.25em] uppercase font-semibold">
-                01 / {total} · Featured
-              </div>
-            </div>
-            <div className="max-w-md">
-              <h3 className="font-display text-3xl lg:text-4xl font-light leading-[1.1] mb-3">
-                {primary.title}
-              </h3>
-              <p className="text-white/80 leading-relaxed text-[15px] mb-5">{primary.desc}</p>
-              <span className="inline-flex items-center gap-2 text-[var(--color-copper)] font-semibold text-sm group-hover:gap-3 transition-all">
-                Learn more <ArrowUpRight className="w-4 h-4" />
-              </span>
-            </div>
-          </div>
-        </Link>
-
-        <div className="col-span-5 grid gap-5">
-          {rest.map((s, i) => {
-            const Ic = s.icon;
-            return (
-              <Link
-                key={s.slug}
-                to={`/services/${s.slug}/`}
-                className="group relative overflow-hidden bg-[var(--color-paper)] border border-[var(--color-line)] hover:border-[var(--color-copper)]/40 rounded-[var(--radius-card)] transition-all duration-500 grid grid-cols-5"
-              >
-                <div className="col-span-2 relative overflow-hidden bg-[var(--color-royal)]">
-                  <ResponsiveImg
-                    base={s.image}
-                    alt={s.photoAlt}
-                    sizes="240px"
-                    className="absolute inset-0 w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 left-3 w-9 h-9 rounded-none bg-[var(--color-copper)] flex items-center justify-center text-white">
-                    <Ic className="w-4 h-4" />
-                  </div>
-                </div>
-                <div className="col-span-3 p-5 lg:p-6 flex flex-col justify-between">
-                  <div>
-                    <div className="text-[var(--color-slate)]/45 text-[10px] tracking-[0.25em] uppercase font-semibold mb-2">
-                      0{i + 2} / {total}
-                    </div>
-                    <h3 className="font-display text-xl lg:text-[22px] text-[var(--color-royal)] mb-2 leading-tight">
-                      {s.title}
-                    </h3>
-                    <p className="text-[var(--color-slate)]/70 leading-relaxed text-[13.5px]">
-                      {s.short || s.desc}
-                    </p>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-[var(--color-copper)] font-semibold text-[13px] mt-4 group-hover:gap-2.5 transition-all">
-                    Learn more <ArrowUpRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ArrowRight, MessageSquare, ChevronDown } from "lucide-react";
+import { Phone, MapPin, Menu, X, ArrowRight, MessageSquare, ChevronDown } from "lucide-react";
 import { SITE } from "../data/site";
 import { SERVICES } from "../data/services";
 import { LOCATIONS } from "../data/locations";
@@ -167,13 +167,13 @@ export default function Header({ onEstimate }) {
             >
               {LEFT_NAV.map(renderNavItem)}
             </nav>
-            <a
-              href={SITE.phone.tel}
-              aria-label={`Call ${SITE.phone.display}`}
+            <Link
+              to="/locations/"
+              aria-label="View service areas"
               className="haptic lg:hidden text-white p-2 -ml-2"
             >
-              <Phone className="w-6 h-6" />
-            </a>
+              <MapPin className="w-6 h-6" />
+            </Link>
           </div>
 
           {/* CENTER — logo */}

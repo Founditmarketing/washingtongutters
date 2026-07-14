@@ -123,7 +123,7 @@ export default function Hero({ onEstimate }) {
         </div>
 
         <h1
-          className="font-display-black uppercase text-white text-[clamp(2.75rem,8.5vw,6.25rem)] leading-[0.95] tracking-[-0.02em] mt-5 max-w-[20ch] fade-up drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]"
+          className="font-display-black text-white text-[clamp(2.75rem,8.5vw,6.25rem)] leading-[0.95] tracking-[-0.02em] mt-5 max-w-[20ch] fade-up drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]"
           style={{ animationDelay: "0.2s" }}
         >
           Gutters Done Right.{" "}

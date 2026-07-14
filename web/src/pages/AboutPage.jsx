@@ -62,7 +62,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6">
             <Eyebrow>Our Story</Eyebrow>
-            <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-6">
+            <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-6">
               Not a Franchise.<br />
               <span className="text-[var(--color-copper)]">Not a Chain.</span>
             </h2>
@@ -104,7 +104,7 @@ export default function AboutPage() {
       <section className="py-section-mobile lg:py-[var(--space-section-md)] bg-[var(--color-royal-deep)]">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow color="white">Our Values</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-white mt-4 mb-12">
+          <h2 className="font-display-black text-display-sm text-white mt-4 mb-12">
             What We <span className="text-[var(--color-copper)]">Stand For.</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -130,7 +130,7 @@ export default function AboutPage() {
       <section className="pt-section-mobile lg:pt-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
         <div className="text-center mb-10">
           <Eyebrow>Recognized &amp; Certified</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-3">
+          <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-3">
             Credentials, not <span className="text-[var(--color-copper)]">claims.</span>
           </h2>
         </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-10">
           <div>
             <Eyebrow>Contact</Eyebrow>
-            <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-6">
+            <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-6">
               Get in <span className="text-[var(--color-copper)]">Touch.</span>
             </h2>
             <div className="space-y-4">

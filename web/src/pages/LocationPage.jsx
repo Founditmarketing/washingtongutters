@@ -64,7 +64,7 @@ export default function LocationPage() {
       {/* ── CALL / ESTIMATE STRIP ── */}
       <section className="bg-[var(--color-royal)]">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/90 font-display-bold uppercase tracking-tight text-lg text-center sm:text-left">
+          <p className="text-white/90 font-display-bold tracking-tight text-lg text-center sm:text-left">
             Free same-week estimates across {loc.county}.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -119,7 +119,7 @@ export default function LocationPage() {
       <section className="py-[var(--space-section-md)] bg-[var(--color-royal-deep)]">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow color="white">What We Do</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-white mt-4 mb-10">
+          <h2 className="font-display-black text-display-sm text-white mt-4 mb-10">
             Gutter services in <span className="text-[var(--color-copper)]">{loc.county}.</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -147,7 +147,7 @@ export default function LocationPage() {
       {/* ── CITIES SERVED ── */}
       <section className="py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
         <Eyebrow>Cities We Serve</Eyebrow>
-        <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-8">
+        <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-8">
           Across <span className="text-[var(--color-copper)]">{loc.county}.</span>
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -174,7 +174,7 @@ export default function LocationPage() {
       <section className="py-[var(--space-section-md)] bg-[var(--color-bone)]">
         <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow>Why Homeowners Choose Us</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-10 max-w-3xl">
+          <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-10 max-w-3xl">
             {loc.why.heading}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -196,7 +196,7 @@ export default function LocationPage() {
       {localReviews.length > 0 && (
         <section className="py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow>What Neighbors Say</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-[var(--color-royal)] mt-4 mb-10">
+          <h2 className="font-display-black text-display-sm text-[var(--color-royal)] mt-4 mb-10">
             Trusted around <span className="text-[var(--color-copper)]">the Sound.</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
@@ -231,7 +231,7 @@ export default function LocationPage() {
       <section className="py-[var(--space-section-md)] bg-[var(--color-royal-deep)]">
         <div className="max-w-[var(--max-prose)] mx-auto px-[var(--space-page-x)]">
           <Eyebrow color="white">{loc.county} FAQ</Eyebrow>
-          <h2 className="font-display-black uppercase text-display-sm text-white mt-4 mb-8">
+          <h2 className="font-display-black text-display-sm text-white mt-4 mb-8">
             Good <span className="text-[var(--color-copper)]">questions.</span>
           </h2>
           <div className="divide-y divide-white/10">
@@ -250,7 +250,7 @@ export default function LocationPage() {
 
       {/* ── FINAL CTA ── */}
       <section className="py-[var(--space-section-lg)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] text-center">
-        <h2 className="font-display-black uppercase text-display-md text-[var(--color-royal)] leading-[0.95]">
+        <h2 className="font-display-black text-display-md text-[var(--color-royal)] leading-[0.95]">
           {loc.ctaHeading}
         </h2>
         <p className="text-[var(--color-slate)]/70 mt-5 max-w-xl mx-auto text-[16px] lg:text-lg leading-relaxed">

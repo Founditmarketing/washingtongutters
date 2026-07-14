@@ -58,7 +58,7 @@ export default function BlogPage() {
                     <Calendar className="w-3.5 h-3.5" /> {post.dateDisplay}
                   </span>
                 </div>
-                <h2 className="font-display-bold uppercase text-xl text-[var(--color-royal)] leading-tight tracking-tight mb-3">
+                <h2 className="font-display-bold text-xl text-[var(--color-royal)] leading-tight tracking-tight mb-3">
                   {post.title}
                 </h2>
                 <p className="text-[var(--color-slate)]/70 text-[14.5px] leading-relaxed mb-5">

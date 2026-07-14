@@ -50,7 +50,7 @@ export default function ReviewsPage() {
                 <Star key={j} className="w-5 h-5 fill-[var(--color-copper)] text-[var(--color-copper)]" />
               ))}
             </div>
-            <p className="font-display-bold uppercase text-2xl sm:text-3xl lg:text-[40px] leading-[1.1] tracking-tight max-w-3xl">
+            <p className="font-display-bold text-2xl sm:text-3xl lg:text-[40px] leading-[1.1] tracking-tight max-w-3xl">
               "{featured.text}"
             </p>
             <div className="mt-7 pt-5 border-t border-white/15 flex items-center gap-4">
@@ -136,7 +136,7 @@ export default function ReviewsPage() {
                 <Star key={i} className="w-6 h-6 fill-[var(--color-copper)] text-[var(--color-copper)]" />
               ))}
             </div>
-            <h3 className="font-display-bold uppercase text-2xl lg:text-3xl text-[var(--color-royal)] mb-3 leading-tight">
+            <h3 className="font-display-bold text-2xl lg:text-3xl text-[var(--color-royal)] mb-3 leading-tight">
               {SITE.customersServed}+ satisfied customers
             </h3>
             <p className="text-[var(--color-slate)]/65 text-[15px] max-w-xl mx-auto mb-6">

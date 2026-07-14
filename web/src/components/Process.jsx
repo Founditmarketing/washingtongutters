@@ -45,7 +45,7 @@ export default function Process() {
             {/* Pattern break: solid white headline with a copper underline rule
                 under the last word, instead of the repeated amber-split-word
                 treatment used by every other section. */}
-            <h2 className="font-display-black uppercase text-display-lg leading-[0.92] tracking-[-0.015em]">
+            <h2 className="font-display-black text-display-lg leading-[0.92] tracking-[-0.015em]">
               Estimate to install
               <br />
               in{" "}
@@ -102,7 +102,7 @@ export default function Process() {
                   <div className="text-[var(--color-copper)] text-[10px] tracking-[0.3em] uppercase font-bold">
                     Field Note · Lakewood, WA
                   </div>
-                  <div className="font-display-bold uppercase text-lg leading-tight mt-1">
+                  <div className="font-display-bold text-lg leading-tight mt-1">
                     160 ft of 6" K-style, formed on-site
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export default function Process() {
                       <Ic className="w-3.5 h-3.5" />
                       Step {p.step}
                     </div>
-                    <h3 className="font-display-bold uppercase text-xl lg:text-[28px] leading-tight tracking-tight mb-2">
+                    <h3 className="font-display-bold text-xl lg:text-[28px] leading-tight tracking-tight mb-2">
                       {p.title}
                     </h3>
                     <p className="text-white/70 leading-relaxed text-[14px] lg:text-[15px] max-w-md">

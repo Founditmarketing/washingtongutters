@@ -8,6 +8,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Distance from the viewport's left edge to where the centered
+       max-content column begins. Lets a full-bleed carousel align its first
+       card to the content gutter while overflowing past the right edge. */
+    --gutter-inline: max(
+      var(--space-page-x),
+      calc((100vw - var(--max-content)) / 2 + var(--space-page-x))
+    );
   }
 
   html, body, #root {

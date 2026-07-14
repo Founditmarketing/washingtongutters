@@ -35,7 +35,7 @@ export default function DiscountBand() {
               <div className="text-[var(--color-copper)] text-xs tracking-[0.3em] uppercase font-semibold mb-2">
                 {tag}
               </div>
-              <p className="font-display-bold uppercase text-xl md:text-[26px] leading-[1.1] tracking-tight">{body}</p>
+              <p className="font-display-bold text-xl md:text-[26px] leading-[1.1] tracking-tight">{body}</p>
             </div>
           </div>
         ))}
