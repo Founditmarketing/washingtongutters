@@ -142,7 +142,7 @@ export default function ReviewsMarquee() {
   return (
     <section
       id="reviews"
-      className="bg-[var(--color-bone)] py-section-mobile lg:py-[var(--space-section-md)] relative overflow-hidden"
+      className="bg-[var(--color-royal)] py-section-mobile lg:py-[var(--space-section-md)] relative overflow-hidden"
       aria-label="Customer reviews"
     >
       {/* === HEADER === one anchored stat block + CTA. */}
@@ -153,7 +153,7 @@ export default function ReviewsMarquee() {
               <Star className="w-4 h-4 fill-[var(--color-copper)]" />
               What Neighbors Say
             </div>
-            <h2 className="font-display-black text-display-sm lg:text-display-md text-[var(--color-royal)] leading-[0.95]">
+            <h2 className="font-display-black text-display-sm lg:text-display-md text-white leading-[0.95]">
               Five stars.
               <br />
               <span className="text-[var(--color-copper)]">Earned slowly.</span>
@@ -163,7 +163,7 @@ export default function ReviewsMarquee() {
           {/* Stat + CTA block — sits below H2 on mobile, beside it on desktop. */}
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-4 sm:items-center lg:items-start">
             <div className="flex items-center gap-3">
-              <div className="font-display-black text-[44px] lg:text-[56px] text-[var(--color-royal)] leading-none">
+              <div className="font-display-black text-[44px] lg:text-[56px] text-white leading-none">
                 {SITE.rating.value.toFixed(1)}
               </div>
               <div className="leading-tight">
@@ -175,14 +175,14 @@ export default function ReviewsMarquee() {
                     />
                   ))}
                 </div>
-                <div className="text-[var(--color-slate)]/70 text-[12px] mt-1 flex items-center gap-1.5">
+                <div className="text-white/70 text-[12px] mt-1 flex items-center gap-1.5">
                   {SITE.rating.label}
                 </div>
               </div>
             </div>
             <Link
               to="/reviews/"
-              className="haptic inline-flex items-center justify-center gap-2 self-start sm:self-auto bg-[var(--color-royal)] hover:bg-[var(--color-royal-deep)] text-white px-5 py-3 rounded-none text-[13px] font-semibold transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
+              className="haptic inline-flex items-center justify-center gap-2 self-start sm:self-auto bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-none text-[13px] font-semibold transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"
             >
               Read all reviews
               <ArrowRight className="w-3.5 h-3.5" />
@@ -200,7 +200,7 @@ export default function ReviewsMarquee() {
                 <ReviewCardMobile key={r.name + r.city} r={r} />
               ))}
             </HorizontalSnap>
-            <div className="mt-5 text-center text-[11px] uppercase tracking-[0.22em] font-bold text-[var(--color-slate)]/50">
+            <div className="mt-5 text-center text-[11px] uppercase tracking-[0.22em] font-bold text-white/50">
               Swipe to read more
             </div>
           </div>
@@ -270,7 +270,7 @@ export default function ReviewsMarquee() {
       )}
 
       {/* Footer microline — verifiable, not fluff. */}
-      <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] mt-8 lg:mt-10 text-[12px] text-[var(--color-slate)]/55 text-center lg:text-left">
+      <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] mt-8 lg:mt-10 text-[12px] text-white/55 text-center lg:text-left">
         Real customer reviews · never edited, never paid for.
       </div>
     </section>

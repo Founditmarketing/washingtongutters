@@ -40,28 +40,28 @@ export default function FooterContactForm() {
 
   if (success) {
     return (
-      <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-7 lg:p-10 text-center h-full flex flex-col items-center justify-center min-h-[300px]">
+      <div className="bg-white border border-[var(--color-line)] shadow-[0_20px_50px_-24px_rgba(0,0,0,0.25)] p-7 lg:p-10 text-center h-full flex flex-col items-center justify-center min-h-[300px]">
         <div className="w-14 h-14 rounded-none bg-[var(--color-copper)] text-white flex items-center justify-center mx-auto mb-5">
           <Check className="w-6 h-6" />
         </div>
-        <h3 className="font-display text-3xl text-white font-light mb-3">
+        <h3 className="font-display text-3xl text-[var(--color-royal)] font-light mb-3">
           Got it, {values.name.split(" ")[0] || "neighbor"}.
         </h3>
-        <p className="text-white/70 text-[15px] leading-relaxed">
-          We'll contact you soon at <span className="text-white font-semibold">{values.phone}</span>.
+        <p className="text-[var(--color-slate)]/70 text-[15px] leading-relaxed">
+          We'll contact you soon at <span className="text-[var(--color-royal)] font-semibold">{values.phone}</span>.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-7 lg:p-10">
+    <div className="bg-white border border-[var(--color-line)] shadow-[0_20px_50px_-24px_rgba(0,0,0,0.25)] p-7 lg:p-10">
       <div className="text-[var(--color-copper)] text-xs tracking-[0.25em] uppercase font-semibold mb-6">
         Request Contact
       </div>
       <form onSubmit={submit} className="space-y-4">
         <label className="block">
-          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-white/70 mb-1.5">
+          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-[var(--color-slate)]/70 mb-1.5">
             Full Name
           </span>
           <input
@@ -69,11 +69,11 @@ export default function FooterContactForm() {
             required
             value={values.name}
             onChange={set("name")}
-            className="w-full bg-black/20 border border-white/10 focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-white focus:outline-none transition-colors"
+            className="w-full bg-[var(--color-paper)] border border-[var(--color-line-strong)] focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-[var(--color-slate)] focus:outline-none transition-colors"
           />
         </label>
         <label className="block">
-          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-white/70 mb-1.5">
+          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-[var(--color-slate)]/70 mb-1.5">
             Phone Number
           </span>
           <input
@@ -81,11 +81,11 @@ export default function FooterContactForm() {
             required
             value={values.phone}
             onChange={set("phone")}
-            className="w-full bg-black/20 border border-white/10 focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-white focus:outline-none transition-colors"
+            className="w-full bg-[var(--color-paper)] border border-[var(--color-line-strong)] focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-[var(--color-slate)] focus:outline-none transition-colors"
           />
         </label>
         <label className="block">
-          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-white/70 mb-1.5">
+          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-[var(--color-slate)]/70 mb-1.5">
             Email
           </span>
           <input
@@ -93,11 +93,11 @@ export default function FooterContactForm() {
             required
             value={values.email}
             onChange={set("email")}
-            className="w-full bg-black/20 border border-white/10 focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-white focus:outline-none transition-colors"
+            className="w-full bg-[var(--color-paper)] border border-[var(--color-line-strong)] focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-[var(--color-slate)] focus:outline-none transition-colors"
           />
         </label>
         <label className="block">
-          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-white/70 mb-1.5">
+          <span className="block text-[11px] tracking-[0.18em] uppercase font-semibold text-[var(--color-slate)]/70 mb-1.5">
             Property Address
           </span>
           <input
@@ -106,7 +106,7 @@ export default function FooterContactForm() {
             value={values.address}
             onChange={set("address")}
             placeholder="123 Main St, Tacoma, WA"
-            className="w-full bg-black/20 border border-white/10 focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-white placeholder:text-white/30 focus:outline-none transition-colors"
+            className="w-full bg-[var(--color-paper)] border border-[var(--color-line-strong)] focus:border-[var(--color-copper)] rounded-[var(--radius-input)] px-4 py-3 text-[var(--color-slate)] placeholder:text-[var(--color-slate)]/40 focus:outline-none transition-colors"
           />
         </label>
         <button

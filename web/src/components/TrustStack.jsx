@@ -1,20 +1,13 @@
 import { SITE } from "../data/site";
 
 /**
- * "By the numbers" stat strip.
+ * "By the numbers" stat band — a compact strip on a faint brand tint that sits
+ * just under the Process timeline. Kept small (modest numerals + tight
+ * padding) so it reads as a quiet proof point, not a headline moment.
  *
- * Two compositions in one component:
- *  - Mobile (<md): vertical row list — each stat is a single line with the
- *    huge numeral on the left and the label running rightward. This avoids
- *    the previous bug where a long word like "Thousands" overflowed its
- *    column and collided with the rating in the adjacent cell.
- *  - Desktop (md+): editorial 4-column with the numerals stacked above the
- *    labels, separated by hairline rules.
- *
- * No counter animations — the prior version animated 0 → target and
- * screenshots routinely caught a mid-flight frame ("2.0 GOOGLE RATING")
- * which contradicted the hero copy and read as broken. Static numbers,
- * single source of truth (data/site.js).
+ * Layout: a 2×2 grid on mobile, a single 4-across row on desktop with hairline
+ * dividers. No counter animations — static numbers from a single source of
+ * truth (data/site.js).
  */
 export default function TrustStack() {
   const counties = SITE.countiesServed.length;
@@ -29,50 +22,31 @@ export default function TrustStack() {
 
   return (
     <section
-      className="py-section-mobile lg:py-[var(--space-section-md)] max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)]"
+      className="bg-[var(--color-royal-tint)]/45 border-y border-[var(--color-line)]"
       aria-label="By the numbers"
     >
-      {/* MOBILE — single-column list. Stat numeral fills its width without
-          ever overflowing because each row owns the full content width. */}
-      <ul className="md:hidden divide-y divide-[var(--color-line-strong)]">
-        {stats.map((s) => (
-          <li
-            key={s.label}
-            className="flex items-baseline justify-between gap-6 py-5"
-            data-reveal
-          >
-            <span className="font-display-black text-[40px] sm:text-[48px] text-[var(--color-royal)] leading-none tracking-[-0.025em] flex-shrink-0">
-              {s.val}
-              {s.suffix && (
-                <span className="text-[var(--color-copper)] ml-1.5">{s.suffix}</span>
-              )}
-            </span>
-            <span className="text-[var(--color-slate)]/65 text-[12px] tracking-[0.18em] uppercase font-semibold text-right leading-snug max-w-[150px]">
-              {s.label}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      {/* DESKTOP — original 4-col editorial layout. */}
-      <div className="hidden md:grid md:grid-cols-4 gap-y-10">
-        {stats.map((s, i) => (
-          <div
-            key={s.label}
-            className={`px-8 ${i > 0 ? "border-l border-[var(--color-line-strong)]" : ""}`}
-            data-reveal
-          >
-            <div className="font-display-black text-[68px] lg:text-[88px] text-[var(--color-royal)] leading-[0.85] tracking-[-0.025em] mb-3">
-              {s.val}
-              {s.suffix && (
-                <span className="text-[var(--color-copper)] ml-1">{s.suffix}</span>
-              )}
+      <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] py-7 lg:py-9">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-7 md:gap-y-0">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              data-reveal
+              className={`text-center px-4 ${
+                i > 0 ? "md:border-l md:border-[var(--color-line-strong)]" : ""
+              }`}
+            >
+              <div className="font-display-black text-[34px] sm:text-[40px] lg:text-[48px] text-[var(--color-royal)] leading-none tracking-[-0.025em]">
+                {s.val}
+                {s.suffix && (
+                  <span className="text-[var(--color-copper)] ml-1">{s.suffix}</span>
+                )}
+              </div>
+              <div className="text-[var(--color-slate)]/60 text-[11px] lg:text-[12px] tracking-[0.15em] uppercase font-semibold mt-2">
+                {s.label}
+              </div>
             </div>
-            <div className="text-[var(--color-slate)]/65 text-[13px] tracking-[0.15em] uppercase font-semibold">
-              {s.label}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

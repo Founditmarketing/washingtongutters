@@ -22,7 +22,7 @@ const POINTS = [
 
 export default function WhyPnw() {
   return (
-    <section className="bg-[var(--color-bone)] py-[var(--space-section-lg)] relative overflow-hidden">
+    <section className="bg-[var(--color-bone)] pt-[var(--space-section-sm)] pb-[var(--space-section-lg)] relative overflow-hidden">
       <div className="max-w-[var(--max-content)] mx-auto px-[var(--space-page-x)] grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-6 relative" data-reveal>
           <div className="aspect-[4/5] relative overflow-hidden rounded-[var(--radius-tile)]">
