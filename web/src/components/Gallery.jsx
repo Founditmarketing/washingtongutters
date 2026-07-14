@@ -72,15 +72,10 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Editorial collage — aspect ratios cycle 4:5 / 3:4 / 5:4 / 4:5 / 4:5 / 3:4
-          so the grid breaks out of uniform-card monotony. The cycle is
-          deterministic per index so the layout is stable across renders.
-          On mobile (2-col) this creates a pleasing brick-stack rhythm; on
-          desktop (3-col) it varies row heights without ever leaving holes. */}
+      {/* Uniform grid — every tile is the same 4:5 aspect (matching the
+          gallery page) so the images all render at the same size. */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
         {items.map((g, i) => {
-          const aspects = ["aspect-[4/5]", "aspect-[3/4]", "aspect-[5/4]", "aspect-[4/5]", "aspect-[4/5]", "aspect-[3/4]"];
-          const aspect = aspects[i % aspects.length];
           return (
             <button
               key={g.image}
@@ -88,7 +83,7 @@ export default function Gallery() {
               onClick={() => setOpenIndex(i)}
               data-reveal
               aria-label={`Open project photo: ${g.alt}`}
-              className={`haptic group relative overflow-hidden ${aspect} bg-[var(--color-royal)] rounded-[var(--radius-card)] sm:rounded-[var(--radius-tile)] text-left`}
+              className="haptic group relative overflow-hidden aspect-[4/5] bg-[var(--color-royal)] rounded-[var(--radius-card)] sm:rounded-[var(--radius-tile)] text-left"
             >
               <ResponsiveImg
                 base={g.image}
