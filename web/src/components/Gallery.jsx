@@ -11,8 +11,20 @@ import { useCarousel } from "../hooks/useCarousel";
  * hero-quality shots, a couple of customer-portrait moments, and the
  * authentically-Pierce variety of home styles. Same data shape as
  * GALLERY so the lightbox + ResponsiveImg components don't care. */
-const FEATURED_INDICES = [0, 1, 2, 3, 4, 8, 9, 17, 18];
-const FEATURED = FEATURED_INDICES.map((i) => GALLERY[i]).filter(Boolean);
+const FEATURED_BASES = [
+  "photos/yellow-craftsman-porch",
+  "photos/white-metal-garage",
+  "photos/two-story-gray-maple",
+  "photos/barn-gutter-run",
+  "photos/blue-rancher",
+  "photos/stone-rancher-downspout",
+  "photos/doghouse-mini-gutter",
+  "photos/gray-two-story-jobsite",
+  "photos/splitlevel-ladder-install",
+];
+const FEATURED = FEATURED_BASES
+  .map((b) => GALLERY.find((g) => g.image === b))
+  .filter(Boolean);
 
 /* Filter pills are derived from the FEATURED slice. Categories with zero
  * matches are dropped so the row never shows a dead pill. */

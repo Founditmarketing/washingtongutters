@@ -162,24 +162,23 @@ export default function ReviewsMarquee() {
 
           {/* Stat + CTA block — sits below H2 on mobile, beside it on desktop. */}
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-4 sm:items-center lg:items-start">
-            <div className="flex items-center gap-3">
-              <div className="font-display-black text-[44px] lg:text-[56px] text-white leading-none">
-                {SITE.rating.value.toFixed(1)}
-              </div>
-              <div className="leading-tight">
-                <div className="flex" aria-label={`${SITE.rating.value} out of 5 stars`}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-[var(--color-copper)] text-[var(--color-copper)]"
-                    />
-                  ))}
-                </div>
-                <div className="text-white/70 text-[12px] mt-1 flex items-center gap-1.5">
-                  {SITE.rating.label}
-                </div>
-              </div>
-            </div>
+            <a
+              href={SITE.reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="See our 5-star reviews on Google"
+              className="haptic self-start inline-flex bg-white p-3 shadow-[0_12px_30px_-14px_rgba(0,0,0,0.55)] hover:-translate-y-0.5 transition-transform"
+            >
+              <img
+                src="/google-rating-5star.png"
+                alt="Google rating: 5.0 out of 5 stars — see all our reviews"
+                width={430}
+                height={174}
+                loading="lazy"
+                decoding="async"
+                className="w-[190px] h-auto"
+              />
+            </a>
             <Link
               to="/reviews/"
               className="haptic inline-flex items-center justify-center gap-2 self-start sm:self-auto bg-[var(--color-copper)] hover:bg-[var(--color-copper-deep)] text-white px-5 py-3 rounded-none text-[13px] font-semibold transition-colors shadow-[0_8px_24px_-10px_rgba(0,0,0,0.35)]"

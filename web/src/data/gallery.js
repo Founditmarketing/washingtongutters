@@ -21,6 +21,31 @@ export const GALLERY = [
   // ── Landscape full-home shots ──
   {
     service: "replacement",
+    image: "photos/yellow-craftsman-porch",
+    alt: "Yellow craftsman-style farmhouse with a full wraparound porch and American flag, finished with clean seamless gutters over manicured landscaping.",
+  },
+  {
+    service: "installation",
+    image: "photos/white-metal-garage",
+    alt: "Newly built white metal garage and shop with a gray metal roof and a fresh seamless gutter run, on a gravel lot lined with evergreens.",
+  },
+  {
+    service: "installation",
+    image: "photos/barn-gutter-run",
+    alt: "Long seamless gutter run with two downspouts along the covered lean-to of a timber pole barn on a rural Washington property.",
+  },
+  {
+    service: "replacement",
+    image: "photos/stone-rancher-downspout",
+    alt: "Stone-veneer rancher with a red front door and a crisp new white seamless gutter and downspout running down the side.",
+  },
+  {
+    service: "installation",
+    image: "photos/doghouse-mini-gutter",
+    alt: "Two bulldogs in a custom dog house fitted with its own miniature seamless gutter — no roofline is too small.",
+  },
+  {
+    service: "replacement",
     image: "photos/two-story-gray-maple",
     alt: "Two-story gray home with dark double garage doors and fresh seamless gutters, framed by a red Japanese maple.",
   },
@@ -117,6 +142,42 @@ export const GALLERY = [
     widths: [640],
     portrait: true,
     alt: "Home with a white car in the driveway and a clean new seamless gutter run.",
+  },
+  {
+    service: "replacement",
+    image: "photos/gray-two-story-jobsite",
+    portrait: true,
+    alt: "Gray two-story home with a white-trim covered porch and new seamless gutters, the Washington Gutters 4 Less truck parked out front.",
+  },
+  {
+    service: "installation",
+    image: "photos/splitlevel-ladder-install",
+    portrait: true,
+    alt: "Crew ladder set against a split-level home mid-install as a new seamless gutter run goes up along the eave.",
+  },
+  {
+    service: "installation",
+    image: "photos/brown-modular-new-gutter",
+    portrait: true,
+    alt: "Brown modular home with white trim and a freshly installed white seamless gutter and downspout.",
+  },
+  {
+    service: "replacement",
+    image: "photos/red-two-story-garage",
+    portrait: true,
+    alt: "Rust-red two-story home with a white single-car garage and new seamless gutters along the rooflines.",
+  },
+  {
+    service: "replacement",
+    image: "photos/gray-rancher-downspout",
+    portrait: true,
+    alt: "Gray single-story rancher with a large picture window and a new white seamless gutter and corner downspout.",
+  },
+  {
+    service: "replacement",
+    image: "photos/gray-rancher-lattice-porch",
+    portrait: true,
+    alt: "Blue-gray rancher with a two-car garage and lattice-railed porch, finished with new seamless gutters.",
   },
 
   // ── Gutter & roofline detail ──

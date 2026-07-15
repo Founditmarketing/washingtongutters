@@ -8,6 +8,7 @@ import Eyebrow from "./atoms/Eyebrow";
 /* Three real project photos rotate behind the hero. */
 const HERO_IMAGES = [
   { base: "photos/two-story-gray-maple", alt: "Two-story home with fresh seamless gutters and a red maple." },
+  { base: "photos/yellow-craftsman-porch", alt: "Yellow craftsman farmhouse with a wraparound porch and new seamless gutters." },
   { base: "photos/blue-rancher", alt: "Blue rancher with a white garage and new seamless gutters." },
   { base: "photos/navy-rancher", alt: "Navy-gray rancher with a clean new gutter run along the roofline." },
 ];

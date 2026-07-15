@@ -17,8 +17,9 @@ import ResponsiveImg from "./atoms/ResponsiveImg";
  *   - Keyboard arrows / on-screen ←→ → prev/next, wraps both ends.
  *   - Body scroll is locked while open so the page underneath doesn't
  *     drift behind the photo.
- *   - 1920w source is requested, but ResponsiveImg's AVIF/WebP/JPG
- *     fallback chain still applies so older browsers degrade gracefully.
+ *   - Requests the largest variant that actually exists (1024w, or 640w
+ *     for portrait assets), with ResponsiveImg's AVIF/WebP/JPG fallback
+ *     chain so older browsers degrade gracefully.
  *
  * Props:
  *   items    - GALLERY array (or filtered subset).
@@ -105,7 +106,7 @@ export default function GalleryLightbox({ items, index, onIndex }) {
             base={item.image}
             alt={item.alt}
             sizes="(max-width: 768px) 90vw, 80vw"
-            widths={item.widths || [1024, 1920]}
+            widths={item.widths || [640, 1024]}
             loading="eager"
             fetchPriority="high"
             className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-[var(--radius-card)] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
