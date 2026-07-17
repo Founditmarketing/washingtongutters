@@ -55,7 +55,9 @@ export default function jobberDevApi() {
         try {
           // Resolve the handler against the project root using a file URL so
           // dynamic import works regardless of where Vite cached this plugin.
-          const filePath = resolve(root, `api/jobber/${route.split("/").pop()}.js`);
+          // Functions live at the repo-root /api (Vercel serves functions from
+          // there); the Vite dev root is web/, so step up one level.
+          const filePath = resolve(root, `../api/jobber/${route.split("/").pop()}.js`);
           const fileUrl = pathToFileURL(filePath).href + `?t=${Date.now()}`;
           const handler = await import(fileUrl);
           await handler.default(req, res);

@@ -34,23 +34,83 @@ export function env(name, fallback = undefined) {
   return v;
 }
 
-/**
- * Persist a freshly rotated refresh token. Local dev writes back to
- * web/.env.local so the next request sees the updated value. Production
- * (Vercel) can't mutate env vars at runtime — there we update process.env in
- * memory so the same warm Lambda keeps working, and log a warning so the
- * owner knows to update Vercel's env vars manually before the function cold-
- * starts again. (We'll move to a KV store before that becomes a real problem.)
+/* ─── Durable refresh-token store (Vercel KV / Upstash Redis, REST) ─────────
+ * Jobber rotates the refresh token on every use, and Vercel env vars are
+ * read-only at runtime — so a rotated token can't be written back to the env
+ * var, and the next cold start would re-read a now-dead token. We persist each
+ * rotation to a KV store, which becomes the authoritative source once written;
+ * the JOBBER_REFRESH_TOKEN env var is only the one-time bootstrap seed.
+ *
+ * Works with either the Vercel KV or the Upstash Redis integration's env vars.
  */
-export function persistRefreshToken(newRefresh) {
+const REFRESH_KEY = "jobber:refresh_token";
+
+function kvConfig() {
+  const url   = env("KV_REST_API_URL")   || env("UPSTASH_REDIS_REST_URL");
+  const token = env("KV_REST_API_TOKEN") || env("UPSTASH_REDIS_REST_TOKEN");
+  return url && token ? { url: url.replace(/\/$/, ""), token } : null;
+}
+
+async function kvGet(key) {
+  const cfg = kvConfig();
+  if (!cfg) return null;
+  try {
+    const res = await fetch(`${cfg.url}/get/${encodeURIComponent(key)}`, {
+      headers: { Authorization: `Bearer ${cfg.token}` },
+    });
+    if (!res.ok) { console.warn(`[jobber] KV get failed: HTTP ${res.status}`); return null; }
+    const json = await res.json().catch(() => ({}));
+    return json?.result ?? null; // Upstash / Vercel-KV REST → { result: <value|null> }
+  } catch (e) {
+    console.warn("[jobber] KV get error:", e.message);
+    return null;
+  }
+}
+
+async function kvSet(key, value) {
+  const cfg = kvConfig();
+  if (!cfg) return false;
+  try {
+    const res = await fetch(`${cfg.url}/set/${encodeURIComponent(key)}`, {
+      method:  "POST",
+      headers: { Authorization: `Bearer ${cfg.token}` },
+      body:    value,
+    });
+    if (!res.ok) { console.error(`[jobber] KV set failed: HTTP ${res.status}`); return false; }
+    return true;
+  } catch (e) {
+    console.error("[jobber] KV set error:", e.message);
+    return false;
+  }
+}
+
+/**
+ * The active refresh token: KV (authoritative once a rotation is stored), with
+ * the JOBBER_REFRESH_TOKEN env var as the bootstrap fallback for the very first
+ * refresh (or when KV isn't configured, e.g. local dev).
+ */
+export async function readActiveRefreshToken() {
+  const fromKv = await kvGet(REFRESH_KEY);
+  if (fromKv) return fromKv;
+  return env("JOBBER_REFRESH_TOKEN");
+}
+
+/**
+ * Persist a freshly rotated refresh token so the NEXT request — including after
+ * a cold start — uses it. Persistence order:
+ *   1. In-memory process.env — keeps the current warm Lambda working.
+ *   2. KV store              — durable across cold starts (production).
+ *   3. web/.env.local        — local-dev convenience so restarts keep working.
+ * If no durable channel is available we log the rotated value as a last resort
+ * (shouldn't happen once KV is configured).
+ */
+export async function persistRefreshToken(newRefresh) {
   if (!newRefresh) return;
-  // Always update the in-memory env so the rest of this request and any
-  // subsequent requests in the same warm process see the rotated token.
   process.env.JOBBER_REFRESH_TOKEN = newRefresh;
 
-  // Local dev: write the new value into .env.local. We look up the file from
-  // cwd / the script directory so this works whether the call originates from
-  // Vite middleware or a one-off node script.
+  const kvOk = await kvSet(REFRESH_KEY, newRefresh);
+
+  let fileOk = false;
   const candidates = [
     resolve(process.cwd(), ".env.local"),
     resolve(process.cwd(), "web", ".env.local"),
@@ -59,23 +119,24 @@ export function persistRefreshToken(newRefresh) {
     if (!existsSync(path)) continue;
     try {
       const txt = readFileSync(path, "utf8");
-      if (!/^JOBBER_REFRESH_TOKEN=/m.test(txt)) {
-        writeFileSync(path, txt.trimEnd() + `\nJOBBER_REFRESH_TOKEN=${newRefresh}\n`, "utf8");
-      } else {
-        const updated = txt.replace(/^JOBBER_REFRESH_TOKEN=.*$/m, `JOBBER_REFRESH_TOKEN=${newRefresh}`);
-        if (updated !== txt) writeFileSync(path, updated, "utf8");
-      }
-      return;
+      const updated = /^JOBBER_REFRESH_TOKEN=/m.test(txt)
+        ? txt.replace(/^JOBBER_REFRESH_TOKEN=.*$/m, `JOBBER_REFRESH_TOKEN=${newRefresh}`)
+        : txt.trimEnd() + `\nJOBBER_REFRESH_TOKEN=${newRefresh}\n`;
+      if (updated !== txt) writeFileSync(path, updated, "utf8");
+      fileOk = true;
+      break;
     } catch (e) {
-      console.warn(`[jobber] could not persist rotated refresh token to ${path}:`, e.message);
+      console.warn(`[jobber] could not write rotated token to ${path}:`, e.message);
     }
   }
-  // Production / serverless: no writable filesystem. Surface the rotated value
-  // so the operator can update Vercel env vars manually if needed.
-  console.warn(
-    "[jobber] refresh token rotated. Update JOBBER_REFRESH_TOKEN in Vercel env to:",
-    newRefresh
-  );
+
+  if (!kvOk && !fileOk) {
+    console.warn(
+      "[jobber] refresh token rotated but NOT durably persisted (no KV configured, " +
+      "no writable .env.local). Set up the Vercel KV / Upstash env vars. Rotated value:",
+      newRefresh,
+    );
+  }
 }
 
 export function buildAuthorizeUrl({ state }) {
@@ -112,13 +173,13 @@ export async function exchangeCodeForToken(code) {
   }
 
   // Capture the issued refresh token so the caller doesn't have to remember.
-  if (json.refresh_token) persistRefreshToken(json.refresh_token);
+  if (json.refresh_token) await persistRefreshToken(json.refresh_token);
   return json; // { access_token, refresh_token, expires_in, ... }
 }
 
 export async function refreshAccessToken() {
-  const refresh = env("JOBBER_REFRESH_TOKEN");
-  if (!refresh) throw new Error("JOBBER_REFRESH_TOKEN is not set. Run the OAuth handshake first.");
+  const refresh = await readActiveRefreshToken();
+  if (!refresh) throw new Error("No refresh token available (KV empty and JOBBER_REFRESH_TOKEN unset). Run the OAuth handshake at /api/jobber/auth.");
   const body = new URLSearchParams({
     client_id:     env("JOBBER_CLIENT_ID"),
     client_secret: env("JOBBER_CLIENT_SECRET"),
@@ -138,10 +199,10 @@ export async function refreshAccessToken() {
     throw new Error(`Jobber refresh failed: ${msg}`);
   }
 
-  // Jobber rotates the refresh token. Persist the new one IMMEDIATELY so the
-  // next call uses it; otherwise the old token is dead and we'd need to re-
-  // run the OAuth handshake.
-  if (json.refresh_token) persistRefreshToken(json.refresh_token);
+  // Jobber rotates the refresh token. Persist the new one IMMEDIATELY (durably,
+  // to KV) so the next call — even after a cold start — uses it; otherwise the
+  // old token is dead and we'd need to re-run the OAuth handshake.
+  if (json.refresh_token) await persistRefreshToken(json.refresh_token);
   return json; // { access_token, refresh_token, expires_in, ... }
 }
 

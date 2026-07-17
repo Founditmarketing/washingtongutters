@@ -93,7 +93,7 @@ function successPage(tokens, account, accountError) {
   return `<!doctype html><html><head><title>Jobber connected</title><style>${baseStyles}</style></head><body>
     <div class="card">
       <h1>Connected to Jobber.</h1>
-      <p style="color:#1a8a4a;font-weight:600">✓ Refresh token has been saved automatically to <code>web/.env.local</code>. No copy/paste needed.</p>
+      <p style="color:#1a8a4a;font-weight:600">✓ Refresh token captured and persisted automatically (Vercel KV in production, <code>web/.env.local</code> in local dev). No copy/paste needed.</p>
 
       ${accountBanner}
 
@@ -104,13 +104,13 @@ function successPage(tokens, account, accountError) {
       <pre>JOBBER_CLIENT_ID=${escapeHtml(env("JOBBER_CLIENT_ID") || "")}
 JOBBER_CLIENT_SECRET=&lt;your secret from Jobber Developer Center&gt;
 JOBBER_REFRESH_TOKEN=${escapeHtml(tokens.refresh_token || "")}
-JOBBER_REDIRECT_URI=https://seamlessgutters4less.com/api/jobber/callback
+JOBBER_REDIRECT_URI=${escapeHtml(env("JOBBER_REDIRECT_URI") || "https://washingtongutters4less.com/api/jobber/callback")}
 JOBBER_API_VERSION=${escapeHtml(env("JOBBER_API_VERSION", "2025-04-16"))}</pre>
 
       <h2>Notes</h2>
       <ol>
-        <li><strong>The server rotates the refresh token automatically.</strong> Every time the API mints a new access token, Jobber issues a fresh refresh token, and the server captures it back into <code>.env.local</code>. You should never need to re-run this handshake unless the app secret is rotated.</li>
-        <li>For Vercel production: Vercel's filesystem is read-only at runtime. The first deploy will work with the refresh token above, but if it ever rotates in production the server logs will print the new value — copy it into Vercel env vars when that happens. Long-term we should move this to Vercel KV or another persistent store.</li>
+        <li><strong>The server rotates the refresh token automatically.</strong> Every time the API mints a new access token, Jobber issues a fresh refresh token, which the server persists to the KV store (and to <code>.env.local</code> in local dev). You should never need to re-run this handshake unless the app secret is rotated.</li>
+        <li>For Vercel production: the rotated token is written to Vercel KV / Upstash, which survives cold starts — so <code>JOBBER_REFRESH_TOKEN</code> in Vercel env only needs the initial bootstrap value shown above. If KV isn't configured, rotation falls back to logging the new value; set up the KV integration to avoid manual updates.</li>
         <li>Visit <code>/api/jobber/whoami</code> any time to re-verify which Jobber account the current token is connected to.</li>
       </ol>
     </div>

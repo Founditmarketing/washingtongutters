@@ -1,4 +1,4 @@
-import { createLeadInJobber, readJsonBody, sendJson, env } from "./_lib.js";
+import { createLeadInJobber, readJsonBody, sendJson, readActiveRefreshToken } from "./_lib.js";
 
 /**
  * POST /api/jobber/request
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
    * for any number of reasons (cold-start rotation, network, plan
    * changes). We treat it as best-effort. */
   let jobberResult;
-  if (env("JOBBER_REFRESH_TOKEN")) {
+  if (await readActiveRefreshToken()) {
     try {
       const data = await createLeadInJobber(lead);
       jobberResult = { ok: true, requestId: data.requestId, requestTitle: data.requestTitle };
@@ -53,7 +53,7 @@ export default async function handler(req, res) {
       jobberResult = { ok: false, error: e.message };
     }
   } else {
-    jobberResult = { ok: false, skipped: true, error: "JOBBER_REFRESH_TOKEN not configured" };
+    jobberResult = { ok: false, skipped: true, error: "No refresh token (run the OAuth handshake at /api/jobber/auth)" };
   }
 
   if (!jobberResult.ok) {
