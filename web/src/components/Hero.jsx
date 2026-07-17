@@ -165,6 +165,7 @@ export default function Hero({ onEstimate }) {
         <div className="flex items-center gap-2 origin-bottom-left scale-[0.6] sm:scale-75 lg:scale-90 drop-shadow-[0_6px_16px_rgba(0,0,0,0.5)]">
           <TradeStamp name="satisfaction-guarantee" size="md" />
           <TradeStamp name="wa-veteran-certified" size="md" />
+          <TradeStamp name="google-5-star" size="md" />
         </div>
       </div>
 

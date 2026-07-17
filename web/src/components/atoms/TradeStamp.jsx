@@ -25,6 +25,10 @@ const STAMPS = {
     base: "/satisfaction-guarantee",
     alt:  "100% Satisfaction Guaranteed",
   },
+  "google-5-star": {
+    base: "/google-5-star-rating",
+    alt:  "5-Star Rated on Google",
+  },
 };
 
 const SIZE_MAP = {
