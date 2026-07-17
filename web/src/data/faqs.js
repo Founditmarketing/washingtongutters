@@ -34,6 +34,42 @@ const counties = SITE.countiesServed
 
 export const FAQ_CATEGORIES = [
   {
+    id: "services-overview",
+    title: "Services & Getting Started",
+    items: [
+      {
+        q: "What services does Washington Gutters 4 Less, LLC offer?",
+        a: [
+          "Washington Gutters 4 Less, LLC provides gutter installation, replacement, repair, gutter guards, and soffit & fascia services to homeowners in Western Washington.",
+        ],
+      },
+      {
+        q: "How is the process of getting a gutter estimate handled?",
+        a: [
+          "You can request a free written estimate. An estimator visits your property about five days later; the flat quote is valid for 12 months with no pressure to proceed.",
+        ],
+      },
+      {
+        q: "Are the gutters custom-made for my home?",
+        a: [
+          "Yes, our seamless aluminum gutters are custom-formed on-site using a truck-mounted machine to ensure perfect fit and quality.",
+        ],
+      },
+      {
+        q: "Does Washington Gutters 4 Less use subcontractors or franchisees?",
+        a: [
+          "No, all jobs are handled directly by our own experienced crew; we do not use subcontractors or operate as a franchise.",
+        ],
+      },
+      {
+        q: "What types of gutters do you install?",
+        a: [
+          "We install seamless K-style aluminum gutters, typically available in 5-inch and 6-inch sizes, designed for heavy Pacific Northwest rain.",
+        ],
+      },
+    ],
+  },
+  {
     id: "seamless-gutters-basics",
     title: "Seamless Gutters 101",
     items: [
