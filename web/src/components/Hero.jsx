@@ -169,13 +169,15 @@ export default function Hero({ onEstimate }) {
         </div>
       </div>
 
-      {/* === SLIDER NAV — bottom-right (lifted above the seal row on mobile so
-          it never covers the credential badges) === */}
-      <div className="absolute z-20 right-[var(--space-page-x)] bottom-28 sm:bottom-6 flex items-center gap-3">
+      {/* === SLIDER NAV — bottom-right. On mobile the bottom band is tight
+          (CTAs above, credential seals to the left), so we show only the dots
+          there — they tuck into the free space beside the seals and never
+          cover the call button or the badges. Full arrows return at sm+. === */}
+      <div className="absolute z-20 right-[var(--space-page-x)] bottom-6 flex items-center gap-3">
         <button
           onClick={() => advance(-1)}
           aria-label="Previous slide"
-          className="haptic w-9 h-9 flex items-center justify-center border border-white/30 hover:border-white text-white bg-black/20 backdrop-blur-sm transition-colors"
+          className="haptic w-9 h-9 hidden sm:flex items-center justify-center border border-white/30 hover:border-white text-white bg-black/20 backdrop-blur-sm transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
@@ -196,7 +198,7 @@ export default function Hero({ onEstimate }) {
         <button
           onClick={() => advance(1)}
           aria-label="Next slide"
-          className="haptic w-9 h-9 flex items-center justify-center border border-white/30 hover:border-white text-white bg-black/20 backdrop-blur-sm transition-colors"
+          className="haptic w-9 h-9 hidden sm:flex items-center justify-center border border-white/30 hover:border-white text-white bg-black/20 backdrop-blur-sm transition-colors"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
