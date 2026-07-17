@@ -5,8 +5,38 @@
  */
 
 import { SITE } from "../data/site";
+import { SERVICES } from "../data/services";
+import { CITIES } from "../data/cities";
 
 const baseUrl = SITE.website;
+
+/* Topics the business is an authority on — a strong entity-authority signal
+ * for AI / answer engines (semantic disambiguation of what we "know about"). */
+const KNOWS_ABOUT = [
+  "Seamless gutters",
+  "Gutter installation",
+  "Gutter replacement",
+  "Gutter repair",
+  "Gutter guards",
+  "Soffit and fascia repair",
+  "Aluminum K-style gutters",
+  "Downspouts and rainwater drainage",
+  "Pacific Northwest rainwater management",
+  "Residential gutter services",
+];
+
+/* areaServed as both counties (AdministrativeArea) and the strongest cities
+ * (City) so local/GEO retrieval can match either granularity. */
+const AREA_SERVED = [
+  ...SITE.countiesServed.map((c) => ({
+    "@type": "AdministrativeArea",
+    name: `${c}, ${SITE.address.regionFull}`,
+  })),
+  ...CITIES.filter((c) => c.tier === 1).map((c) => ({
+    "@type": "City",
+    name: `${c.name}, ${SITE.address.regionFull}`,
+  })),
+];
 
 export function localBusinessSchema() {
   const schema = {
@@ -18,8 +48,13 @@ export function localBusinessSchema() {
     url: baseUrl,
     telephone: SITE.phone.raw,
     image: `${baseUrl}/og-default.jpg`,
+    logo: { "@type": "ImageObject", url: `${baseUrl}/logo.png` },
+    brand: { "@type": "Brand", name: SITE.name },
+    slogan: SITE.tagline,
     priceRange: "$$",
+    currenciesAccepted: "USD",
     description: SITE.description,
+    knowsAbout: KNOWS_ABOUT,
     address: {
       "@type": "PostalAddress",
       addressLocality: SITE.address.locality,
@@ -31,14 +66,31 @@ export function localBusinessSchema() {
       latitude: 47.2529,
       longitude: -122.4443,
     },
-    areaServed: SITE.countiesServed.map((c) => ({
-      "@type": "AdministrativeArea",
-      name: `${c}, ${SITE.address.regionFull}`,
-    })),
+    areaServed: AREA_SERVED,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SITE.phone.raw,
+      contactType: "customer service",
+      areaServed: "US-WA",
+      availableLanguage: "English",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Gutter Services",
+      itemListElement: SERVICES.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.short || s.desc,
+          url: `${baseUrl}/services/${s.slug}/`,
+        },
+      })),
+    },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: String(SITE.rating.value),
-      reviewCount: String(SITE.rating.count),
+      ratingCount: String(SITE.rating.count),
       bestRating: "5",
       worstRating: "1",
     },

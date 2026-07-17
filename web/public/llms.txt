@@ -1,24 +1,35 @@
 # Washington Gutters 4 Less
 
-Washington Gutters 4 Less provides professional gutter services in the Greater Seattle area. We specialize in gutter installation, replacement, cleaning, and maintenance, including gutter guards and soffit/fascia repair.
+> Veteran-owned, family-owned, and locally operated seamless gutter company serving homeowners across Western Washington and the greater Puget Sound. We custom-form seamless aluminum gutters on-site with our own crew — no subcontractors, no franchise. 5-star rated in Washington. Phone: (253) 399-0300.
 
-- [Full Content](/llms-full.txt) - The complete text content of our website, including detailed services descriptions, service areas, customer testimonials, and FAQs.
-- [FAQ](/faq/) - Answers to common questions about seamless gutters, pricing, timelines, materials, service area, gutter guards, and maintenance.
+Washington Gutters 4 Less, LLC specializes in seamless aluminum gutter systems built for heavy Pacific Northwest rain. Every estimate, fabrication, and installation is handled directly by our own crew. Estimates are free and written, and quotes stay valid for 12 months.
 
 ## Services
-- Gutter Installation
-- Gutter Replacement
-- Gutter Repair
-- Gutter Guards
-- Soffit or Fascia
+- Gutter Installation — new continuous seamless aluminum gutters and downspouts, custom-formed on-site to your exact roofline.
+- Gutter Replacement — remove and haul away old/sagging/leaking gutters and install new seamless runs, usually in one day.
+- Gutter Repair — fix leaks, sags, detached sections, loose downspouts, and poor drainage.
+- Gutter Guards — leaf and debris protection that keeps gutters flowing and reduces cleaning.
+- Soffit & Fascia — repair or replace the soffit and fascia boards behind and beneath the gutters.
 
 ## Service Area
-We serve the Greater Seattle–Tacoma Area and the wider Puget Sound, including King, Pierce, Snohomish, Thurston, and Mason counties.
+Five Washington counties — King, Pierce, Snohomish, Thurston, and Mason — across the Puget Sound and Western Washington. Cities served include Tacoma, Bellevue, Kirkland, Redmond, Renton, Puyallup, Gig Harbor, University Place, Lakewood, Issaquah, Everett, Lynnwood, Bothell, Edmonds, Mukilteo, Mercer Island, Sammamish, Bonney Lake, Spanaway, Marysville, Lake Stevens, Snohomish, Monroe, Woodinville, Shoreline, Covington, North Bend, Graham, Buckley, Olympia, Lacey, Tumwater, Shelton, and Belfair.
 
 ## Company Information
-- Name: Washington Gutters 4 Less
-- Focus: High-quality, reliable, and affordable gutter services.
-- Satisfaction Guarantee: Yes
-- Veteran Owned Business: Yes
+- Name: Washington Gutters 4 Less, LLC
+- Tagline: The Only Gutter Company You'll Ever Need
+- Ownership: veteran-owned, family-owned, local and independent (not a franchise)
+- Crew: in-house only — no subcontractors
+- Product: seamless K-style aluminum gutters, commonly 5-inch and 6-inch
+- Rating: 5.0 stars, 5-Star Rated in Washington; 2,291+ customers served
+- Licensing: licensed, bonded, and insured
+- Estimates: free, written, and valid for 12 months
+- Phone (only contact channel): (253) 399-0300
+- Website: https://washingtongutters4less.com
 
-For detailed information on our services, service areas, and to request an estimate, please visit our website.
+## Key Pages
+- [Full company corpus](/llms-full.txt) — complete services, service area, process, FAQs, and reviews in plain text.
+- [FAQ](/faq/) — answers about seamless gutters, pricing, estimates, timelines, materials, service area, gutter guards, and maintenance.
+- [Services](/services/gutter-installation/) — detailed service descriptions.
+- [Reviews](/reviews/) — customer reviews.
+- [Service Areas](/locations/) — county and city coverage.
+- [Contact](/contact/) — request a free estimate.
