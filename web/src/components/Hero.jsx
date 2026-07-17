@@ -169,8 +169,9 @@ export default function Hero({ onEstimate }) {
         </div>
       </div>
 
-      {/* === SLIDER NAV — bottom-right === */}
-      <div className="absolute z-20 right-[var(--space-page-x)] bottom-6 flex items-center gap-3">
+      {/* === SLIDER NAV — bottom-right (lifted above the seal row on mobile so
+          it never covers the credential badges) === */}
+      <div className="absolute z-20 right-[var(--space-page-x)] bottom-28 sm:bottom-6 flex items-center gap-3">
         <button
           onClick={() => advance(-1)}
           aria-label="Previous slide"
