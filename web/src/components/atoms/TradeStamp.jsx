@@ -12,10 +12,16 @@
  * to STAMPS to wire up a new credential.
  */
 
+/* `ratio` is each source image's true width/height. We size stamps by a
+ * common HEIGHT and derive the width from this ratio, so non-square seals
+ * render at their natural proportions instead of being squeezed into a
+ * square box (which made the wider seals look vertically stretched).
+ * Defaults to 1 (square) when omitted. */
 const STAMPS = {
   "wa-veteran-certified": {
     base: "/wa-veteran-certified",
     alt:  "Washington Certified Veteran-Owned Business \u2014 state-issued credential",
+    ratio: 240 / 198,
   },
   "veteran-owned-business": {
     base: "/veteran-owned-business",
@@ -24,15 +30,17 @@ const STAMPS = {
   "satisfaction-guarantee": {
     base: "/satisfaction-guarantee",
     alt:  "100% Satisfaction Guaranteed",
+    ratio: 240 / 228,
   },
   "google-5-star": {
     base: "/google-5-star-rating",
     alt:  "5-Star Rated on Google",
+    ratio: 1,
   },
 };
 
 const SIZE_MAP = {
-  /* Each entry maps to a CSS pixel display width. We ship two source
+  /* Each entry maps to a CSS pixel display HEIGHT. We ship two source
    * widths (240 and 480) and pick the larger one whenever the displayed
    * size exceeds 240, so retina screens stay sharp. */
   sm: 44,
@@ -50,9 +58,10 @@ export default function TradeStamp({ name, size = "sm", alt, className = "" }) {
     return null;
   }
 
-  const displayed = SIZE_MAP[size] || SIZE_MAP.sm;
+  const height = SIZE_MAP[size] || SIZE_MAP.sm;
+  const width = Math.round(height * (config.ratio || 1));
 
-  const useLargeSrc = displayed > 240;
+  const useLargeSrc = Math.max(width, height) > 240;
   const base = useLargeSrc ? `${config.base}-480` : `${config.base}-240`;
 
   return (
@@ -61,12 +70,12 @@ export default function TradeStamp({ name, size = "sm", alt, className = "" }) {
       <img
         src={`${base}.png`}
         alt={alt || config.alt}
-        width={displayed}
-        height={displayed}
+        width={width}
+        height={height}
         loading="lazy"
         decoding="async"
         className="block"
-        style={{ width: displayed, height: displayed }}
+        style={{ width, height }}
       />
     </picture>
   );
